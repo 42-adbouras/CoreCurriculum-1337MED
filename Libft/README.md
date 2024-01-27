@@ -64,4 +64,3 @@ Functions to manipulate memory and strings is very useful. But you will soon dis
 |[ft_lstclear](ft_lstclear_bonus.c)    |Deletes and frees the given node and every successor of that node, using the function ’del’ and free(3). Finally, the pointer to the list must be set to NULL.
 |[ft_lstiter](ft_lstiter_bonus.c)    |Iterates the list ’lst’ and applies the function ’f’ on the content of each node.
 |[ft_lstmap](ft_lstmap_bonus.c)    |Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed.
->>>>>>> 47b9fe61f47e3a9fea035c9ce6c7f1645c52cf6b
