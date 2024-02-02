@@ -19,3 +19,7 @@ This is a high-level overview of how the code works. The details of how each fun
 ## II - Bonus Part
 
 Basicly the same workflow the only defference is that get_next_line(), it has a static char array `line` of size 10240 (number of file descriptors you can open in one proscess). This array is used to store lines read from different file descriptors.
+
+### Notice
+
+⚠️ There is some minor mistakes but it still works! never gonna forget the evaluation for this project 🤦‍♂️
