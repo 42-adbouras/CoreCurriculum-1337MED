@@ -23,3 +23,5 @@ Basicly the same workflow the only defference is that get_next_line(), it has a 
 ### Notice
 
 ⚠️ There is some minor mistakes but it still works! never gonna forget the evaluation for this project 🤦‍♂️
+  - I included the bonus header file on the mandatory part; mandatoty and bonus use the same functions & working in the same directory!
+  - And I missed ft_calloc prototype on the header file; I used it at the begining but found a flaw, so I switched to calloc!
