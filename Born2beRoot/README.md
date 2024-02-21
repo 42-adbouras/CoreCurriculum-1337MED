@@ -35,4 +35,15 @@ Here you can find the topics that we will examine, we are going to tackle the co
       `1. Hardware Virtualization:` This involves creating a virtual version of an entire computer system, including the hardware. It allows multiple operating systems to run on a single physical machine, each with its own virtual hardware.\
       `2. Operating System Virtualization:` Also known as containerization, this involves running multiple isolated instances of an operating system on a single host, sharing the host's kernel but having separate user spaces. Containers are more lightweight than VMs and are often used for deploying applications.
 
+  * _System Administration:_\
+    System administration is the practice of managing and maintaining computer systems, networks, and services. It involves a variety of tasks, including:\
+    Installing and configuring hardware and software.\
+    Managing user accounts and permissions.\
+    Ensuring system security and compliance with policies.\
+    Monitoring system performance and availability.\
+    Troubleshooting and resolving technical issues.\
+    Planning for system growth and capacity.\
+    Keeping systems up-to-date with the latest patches and updates.\
+    Sstem administrators are responsible for the smooth operation of IT infrastructure and are often the first point of contact for technical issues within an organization.
+    
 
