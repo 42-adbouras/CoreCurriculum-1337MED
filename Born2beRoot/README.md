@@ -32,8 +32,12 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Types of virtuallization:
     There are two main types of virtualization:
 
-      `1. Hardware Virtualization:` This involves creating a virtual version of an entire computer system, including the hardware. It allows multiple operating systems to run on a single physical machine, each with its own virtual hardware.\
+      `1. Hardware Virtualization:` Also known as Bare Metal, this involves creating a virtual version of an entire computer system, including the hardware. It allows multiple operating systems to run on a single physical machine, each with its own virtual hardware.\
       `2. Operating System Virtualization:` Also known as containerization, this involves running multiple isolated instances of an operating system on a single host, sharing the host's kernel but having separate user spaces. Containers are more lightweight than VMs and are often used for deploying applications.
+
+    <p align="center">
+    <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/05/Hypervisors-1024x955.png" style="width:500px">
+    </p>
 
   * _System Administration:_\
     System administration is the practice of managing and maintaining computer systems, networks, and services. It involves a variety of tasks, including:\
