@@ -93,7 +93,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
     
   * Directory Structure:\
     The Linux directory structure is a hierarchical organization of files and directories that defines how data is stored and accessed on a Linux system. It's designed to make it easy for users and applications to find and access files. Here's a brief overview of the main directories in the Linux filesystem:\
-    `/:` The root directory, also known as the root directory, is the top-level directory in the hierarchy. All other directories and files on the system are contained within this directory.\
+    `/:` The root directory, is the top-level directory in the hierarchy. All other directories and files on the system are contained within this directory.\
     `/bin:` Contains essential command binaries that are needed for the system to boot and run. These are basic commands that are available to all users.\
     `/sbin:` Similar to /bin, but contains system binaries that are typically used for system maintenance and administration.\
     `/etc:` Contains system-wide configuration files. This directory is crucial for the configuration of the system and its services.\
