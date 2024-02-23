@@ -18,6 +18,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * What is a File System
   * Types of file systems
   * Directory Structure
+  * What is Mounting
 
 ## Virtuallization
   * What is a Virtual Machine:
@@ -45,7 +46,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
     <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/05/Hypervisors-1024x955.png" style="width:500px">
     </p>
 
-  * _System Administration:_\
+  * System Administration:\
     System administration is the practice of managing and maintaining computer systems, networks, and services. It involves a variety of tasks, including:\
     Installing and configuring hardware and software.\
     Managing user accounts and permissions.\
@@ -80,13 +81,15 @@ Here you can find the topics that we will examine, we are going to tackle the co
 
   * Types of file systems:\
     Linux supports a variety of file systems, each with its own set of features and capabilities. Some of the most commonly used file systems in Linux includes:\
-    `ext4:` This is the default file system for many Linux distributions. It is known for its reliability, performance, and support for large file sizes and file systems.\
-    `XFS:` Designed for high performance and scalability, XFS is often used in enterprise environments where large amounts of data need to be stored efficiently.\
-    `Btrfs:` A modern file system that offers advanced features like snapshots, compression, and built-in RAID functionality. It aims to provide a more robust and flexible   alternative to ext4.\
-    `ZFS:` Originally developed by Sun Microsystems, ZFS is known for its data integrity features, such as checksums and self-healing capabilities. It's used in some Linux   distributions and is known for its advanced features.\
-    `FAT32 and NTFS:` These are file systems commonly used in Windows environments but can also be used in Linux for compatibility with removable storage devices.
+    `ext, ext2, ext3 and ext4:` The file system Ext stands for Extended File System. It was primarily developed for MINIX OS. The ext file system is an older version, and is no longer used due to some limitations.\
+Ext2 is the first Linux file system that allows managing two terabytes of data. Ext3 is developed through Ext2; it is an upgraded version of Ext2 and contains backward compatibility. The major drawback of Ext3 is that it does not support servers because this file system does not support file recovery and disk snapshot.\
+Ext4 file system is the faster file system among all the Ext file systems. It is a very compatible option for the SSD (solid-state drive) disks, and it is the default file system in Linux distribution.\
+    `FAT32 and NTFS:` These are file systems commonly used in Windows environments but can also be used in Linux for compatibility with removable storage devices.\
+    `JFS:` JFS stands for Journaled File System, and it is developed by IBM for AIX Unix. It is an alternative to the Ext file system. It can also be used in place of Ext4, where stability is needed with few resources. It is a handy file system when CPU power is limited.\
+    `Swap:` The swap file system is used for memory paging in Linux operating system during the system hibernation. A system that never goes in hibernate state is required to have swap space equal to its RAM size.\
+    `etc.:` There is mutch more, if you want to dive deeper, [here](https://www.javatpoint.com/linux-file-system) is a good source.
 
-    In summory (...)
+    In summory, you can say that a file system is a flag, telling the operation system what kind of driver to load, to read, write in a drive or partition.
     
   * Directory Structure:\
     The Linux directory structure is a hierarchical organization of files and directories that defines how data is stored and accessed on a Linux system. It's designed to make it easy for users and applications to find and access files. Here's a brief overview of the main directories in the Linux filesystem:\
@@ -105,6 +108,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
     `/proc:` A virtual filesystem that provides information about the system and running processes.\
     `/sys:` Another virtual filesystem that provides a view into the kernel's view of the system's hardware.\
     `/mnt and /media:` Used for mounting external file systems.
+
+  * What is Mounting:\
+      Mounting in Linux is the process of making a file system available for use by attaching it to a specific directory in the existing file system hierarchy. This allows users and applications to access the files and directories on the mounted file system as if they were part of the main file system. The mount command is used to perform this operation, specifying the device and the mount point.
 
 
 
