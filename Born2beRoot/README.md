@@ -8,17 +8,18 @@ Here you can find the topics that we will examine, we are going to tackle the co
 
 # TOC
 - [Virtuallization](#virtuallization)
-  * What is a Virtual Machine
+  * What is a Virtual Machine?
   * Advantages of a Virtual Machine
   * Types of virtuallization
 - [LVM](#lvm)
-  * What is LVM
+  * What is LVM?
   * LVM components
+  * What is encryption?
 - [Linux File System](#linux-file-system)
-  * What is a File System
+  * What is a File System?
   * Types of file systems
   * Directory Structure
-  * What is Mounting
+  * What is Mounting?
 
 ## Virtuallization
   * What is a Virtual Machine:\
@@ -72,6 +73,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
     <img src="https://www.redhat.com/sysadmin/sites/default/files/styles/full/public/2020-03/LVM%20Cropped.jpg?itok=wz2G1Aci" style="width:600px">
     </p>
 
+  * What is encryption:\
+    Encryption is the process of converting plain, readable data into an unreadable format using algorithms and keys. This is done to secure the data and prevent unauthorized access, ensuring that only authorized parties with the corresponding decryption keys can access and understand the original information.\
+    Based on the subject, when configuring volumes in Linux, particularly with Logical Volume Manager (LVM), the encryption is typically achieved using a software-based encryption mechanism called dm-crypt. dm-crypt is a kernel-level encryption module that provides transparent encryption of block devices, including logical volumes managed by LVM.
+
 ## Linux File System
   * What is a File System:\
     In Linux, a file system is a method of storing and organizing files on a storage device, such as a hard disk, solid-state drive, or network storage. It defines how data is stored, retrieved, and managed on the device. The file system is responsible for keeping track of files, directories, and the space on the disk. It provides a structure that allows users and applications to read from and write to files in a way that is efficient and organized.
@@ -86,7 +91,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
     `Swap:` The swap file system is used for memory paging in Linux operating system during the system hibernation. A system that never goes in hibernate state is required to have swap space equal to its RAM size.\
     `etc.:` There is much more to filesystems, if you want to dive deeper, [here](https://www.javatpoint.com/linux-file-system) is a good source.
 
-    In summory, you can say that a file system is a flag, telling the operation system what kind of driver to load, to read, write in a drive or partition.
+    In summary, you can say that a filesystem serves as a signal or a "flag" to the operating system, indicating which driver to load for reading and writing data on a specific drive or partition.
     
   * Directory Structure:\
     The Linux directory structure is a hierarchical organization of files and directories that defines how data is stored and accessed on a Linux system. It's designed to make it easy for users and applications to find and access files. Here's a brief overview of the main directories in the Linux filesystem:\
