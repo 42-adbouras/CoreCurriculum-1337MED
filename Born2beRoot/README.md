@@ -1,4 +1,4 @@
-# The project is still in progress ⚠️
+# ⚠️ The project is still in progress ⚠️
 
 ## Introduction
 
@@ -12,9 +12,12 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Advantages of a Virtual Machine
   * Types of virtuallization
 - [LVM](#lvm)
-  * What is LVM:
-  * LVM components:
-
+  * What is LVM
+  * LVM components
+- [Linux File System](#linux-file-system)
+  * What is a File System
+  * Types of file systems
+  * Directory Structure
 
 ## Virtuallization
   * What is a Virtual Machine:
@@ -58,7 +61,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
     LVM, or Logical Volume Management, is a method of disk management that allows for the flexible allocation of disk space to logical volumes. Unlike traditional disk partitioning, which divides a physical disk into fixed-size partitions, LVM allows for the creation of logical volumes that can span multiple physical disks. This flexibility enables easier disk space management, including resizing, moving, and snapshotting of volumes.
 
   * LVM components:\
-    Here's a brief overview of LVM components and concepts:
+    Here's a brief overview of LVM components and concepts:\
 `1. Physical Volumes (PVs):` These are the actual physical disks or partitions that are used by LVM. They are the lowest level of storage in LVM.\
 `2. Volume Groups (VGs):` A volume group is a collection of one or more physical volumes that are combined to form a single logical unit. VGs are used to allocate disk space to logical volumes.\
 `3. Logical Volumes (LVs):` These are the virtual partitions created within a volume group. They can be resized, moved, and snapshotted independently of the physical storage.\
@@ -70,3 +73,40 @@ Here you can find the topics that we will examine, we are going to tackle the co
     <p align="center">
     <img src="https://www.redhat.com/sysadmin/sites/default/files/styles/full/public/2020-03/LVM%20Cropped.jpg?itok=wz2G1Aci" style="width:600px">
     </p>
+
+## Linux File System
+  * What is a File System:\
+    In Linux, a file system is a method of storing and organizing files on a storage device, such as a hard disk, solid-state drive, or network storage. It defines how data is stored, retrieved, and managed on the device. The file system is responsible for keeping track of files, directories, and the space on the disk. It provides a structure that allows users and applications to read from and write to files in a way that is efficient and organized.
+
+  * Types of file systems:\
+    Linux supports a variety of file systems, each with its own set of features and capabilities. Some of the most commonly used file systems in Linux includes:\
+    `ext4:` This is the default file system for many Linux distributions. It is known for its reliability, performance, and support for large file sizes and file systems.\
+    `XFS:` Designed for high performance and scalability, XFS is often used in enterprise environments where large amounts of data need to be stored efficiently.\
+    `Btrfs:` A modern file system that offers advanced features like snapshots, compression, and built-in RAID functionality. It aims to provide a more robust and flexible   alternative to ext4.\
+    `ZFS:` Originally developed by Sun Microsystems, ZFS is known for its data integrity features, such as checksums and self-healing capabilities. It's used in some Linux   distributions and is known for its advanced features.\
+    `FAT32 and NTFS:` These are file systems commonly used in Windows environments but can also be used in Linux for compatibility with removable storage devices.
+
+    In summory (...)
+    
+  * Directory Structure:\
+    The Linux directory structure is a hierarchical organization of files and directories that defines how data is stored and accessed on a Linux system. It's designed to make it easy for users and applications to find and access files. Here's a brief overview of the main directories in the Linux filesystem:\
+    `/:` The root directory, also known as the root directory, is the top-level directory in the hierarchy. All other directories and files on the system are contained within this directory.\
+    `/bin:` Contains essential command binaries that are needed for the system to boot and run. These are basic commands that are available to all users.\
+    `/sbin:` Similar to /bin, but contains system binaries that are typically used for system maintenance and administration.\
+    `/etc:` Contains system-wide configuration files. This directory is crucial for the configuration of the system and its services.\
+    `/home:` Contains user directories. Each user has a directory under /home where their personal files and directories are stored.\
+    `/usr:` Contains multi-user utilities and applications. This includes binaries, libraries, and documentation.\
+    `/var:` Contains variable data files such as system logs, databases, and mail. This directory can grow in size over time.\
+    `/tmp:` A temporary directory used for storing temporary files created by the system and users.\
+    `/boot:` Contains files needed to boot the system, including the Linux kernel and initial RAM disk (initrd).\
+    `/dev:` Contains device files that represent hardware devices. These files are used by the system to interact with hardware.\
+    `/lib and /lib64:` Contain library files that are needed by the system and applications to run.\
+    `/opt:` Used for optional or add-on software packages.\
+    `/proc:` A virtual filesystem that provides information about the system and running processes.\
+    `/sys:` Another virtual filesystem that provides a view into the kernel's view of the system's hardware.\
+    `/mnt and /media:` Used for mounting external file systems.
+
+
+
+
+    
