@@ -21,12 +21,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * What is Mounting
 
 ## Virtuallization
-  * What is a Virtual Machine:
-
+  * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
     
-  * Advantages of a Virtual Machine:
-
+  * Advantages of a Virtual Machine:\
     `Resource Efficiency:` VMs allow multiple operating systems to run on a single physical machine, sharing resources efficiently.\
     `Isolation:` Each VM operates independently, which means that issues in one VM do not affect others.\
     `Flexibility:` VMs can be easily created, modified, or deleted without impacting the host system or other VMs.\
@@ -36,11 +34,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
     `Cost Savings:` By consolidating multiple servers onto a single physical machine, VMs can reduce hardware costs.\
     `Portability:` VMs can be moved between different physical machines with minimal disruption.
 
-  * Types of virtuallization:
-
+  * Types of virtuallization:\
     There are two main types of virtualization:\
       `1. Hardware Virtualization:` Also known as Bare Metal, this involves creating a virtual version of an entire computer system, including the hardware. It allows multiple operating systems to run on a single physical machine, each with its own virtual hardware.\
-      `2. Operating System Virtualization:` Also known as containerization, this involves running multiple isolated instances of an operating system on a single host, sharing the host's kernel but having separate user spaces. Containers are more lightweight than VMs and are often used for deploying applications.
+      `2. Operating System Virtualization:` This involves running multiple isolated instances of an operating system on a single host, sharing the host's kernel but having separate user spaces. Containers are more lightweight than VMs and are often used for deploying applications.
 
     <p align="center">
     <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/05/Hypervisors-1024x955.png" style="width:500px">
@@ -87,7 +84,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
     `FAT32 and NTFS:` These are file systems commonly used in Windows environments but can also be used in Linux for compatibility with removable storage devices.\
     `JFS:` JFS stands for Journaled File System, and it is developed by IBM for AIX Unix. It is an alternative to the Ext file system. It can also be used in place of Ext4, where stability is needed with few resources. It is a handy file system when CPU power is limited.\
     `Swap:` The swap file system is used for memory paging in Linux operating system during the system hibernation. A system that never goes in hibernate state is required to have swap space equal to its RAM size.\
-    `etc.:` There is mutch more, if you want to dive deeper, [here](https://www.javatpoint.com/linux-file-system) is a good source.
+    `etc.:` There is much more to filesystems, if you want to dive deeper, [here](https://www.javatpoint.com/linux-file-system) is a good source.
 
     In summory, you can say that a file system is a flag, telling the operation system what kind of driver to load, to read, write in a drive or partition.
     
