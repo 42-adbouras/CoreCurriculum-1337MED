@@ -6,7 +6,8 @@ The aim of Born2beRoot is to learn and explore the fundamentals of `system admin
 We have to create a server respecting the partition scheme defined in the subject, and we have the right to choose between two Linux distributions (Debian or Rocky).
 Here you can find the topics that we will examine, we are going to tackle the configuration of the server, I will not go through the installation.
 
-# TOC
+# ToC
+### [Mandatory](#mandatory)
 - [Virtuallization](#virtuallization)
   * What is a Virtual Machine?
   * Advantages of a Virtual Machine
@@ -15,12 +16,13 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * What is LVM?
   * LVM components
   * What is encryption?
+  * Purpose of sevaral partitions
 - [Linux File System](#linux-file-system)
   * What is a File System?
   * Types of file systems
   * Directory Structure
   * What is Mounting?
-
+# Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
@@ -77,6 +79,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
     Encryption is the process of converting plain, readable data into an unreadable format using algorithms and keys. This is done to secure the data and prevent unauthorized access, ensuring that only authorized parties with the corresponding decryption keys can access and understand the original information.\
     Based on the subject, when configuring volumes in Linux, particularly with Logical Volume Manager (LVM), the encryption is typically achieved using a software-based encryption mechanism called dm-crypt. dm-crypt is a kernel-level encryption module that provides transparent encryption of block devices, including logical volumes managed by LVM.
 
+  * Purpose of sevaral partitions:\
+    We could very well have a single partition to contain all of the operating system’s data, all of the software and all of the personal user files. The purpose of having several distinct partitions is to not put all our eggs in the same basket. If one file system becomes corrupted for example, only one of the partitions would be affected instead of the entire system.\
+    In summary, the utilization of multiple partitions provides advantages such as organization, security, multi-boot capability, performance optimization, backup efficiency, and file system flexibility.
+    
 ## Linux File System
   * What is a File System:\
     In Linux, a file system is a method of storing and organizing files on a storage device, such as a hard disk, solid-state drive, or network storage. It defines how data is stored, retrieved, and managed on the device. The file system is responsible for keeping track of files, directories, and the space on the disk. It provides a structure that allows users and applications to read from and write to files in a way that is efficient and organized.
