@@ -22,6 +22,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Types of file systems
   * Directory Structure
   * What is Mounting?
+- [Packet Management in Debian](#packet-management-in-debian)
+  * APT & Aptitude
+    
 # Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
@@ -120,7 +123,18 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
   * What is Mounting:\
       Mounting in Linux is the process of making a file system available for use by attaching it to a specific directory in the existing file system hierarchy. This allows users and applications to access the files and directories on the mounted file system as if they were part of the main file system. The mount command is used to perform this operation, specifying the device and the mount point.
 
-
-
-
-    
+## Packet Management in Debian
+   In Linux-based operating systems such as Debian, software installation is achieved through packages. These packages encapsulate all the necessary files required for executing a specific set of commands or functionalities. Thus, it's crucial to understand how to install these packages on our Born2beroot virtual machine.
+  * APT:\
+    APT (Advanced Package Tool) is a package management command-line tool used by Debian. It simplifies the process of managing software packages on Linux systems. apt provides a high-level command-line interface for the package management system and is designed to handle the installation, upgrade, and removal of software packages, as well as the management of package dependencies.\
+    Here are some of the key functionalities provided by apt:\
+`Installing Packages:` You can install new software packages using the `apt install` command.\
+`Updating Package Lists:` Before installing new packages, it's a good practice to update the package lists to ensure you're getting the latest versions. This is done with the `apt update` command.\
+`Upgrading Packages:` To upgrade all installed packages to their latest versions, you can use the `apt upgrade` command.\
+`Removing Packages:` If you no longer need a package, you can remove it using the `apt remove` command.\
+`Searching for Packages:` You can search for available packages using the `apt search` command.\
+`Cleaning Up:` apt also allows you to clean up unnecessary packages and dependencies that were installed as dependencies but are no longer needed with the `apt autoremove` command.
+  * Aptitude:\
+    Aptitude also like APT, it's a high-level package management interface for Debian-based systems, it provides a text-based interface similar to a menu-driven package manager, making it more user-friendly for some users who prefer graphical interfaces.
+Aptitude can perform most package management tasks, including installing, removing, and upgrading packages, as well as searching for packages and resolving package dependencies.
+Aptitude also includes features like package filtering, package previewing, and a powerful dependency resolver.  
