@@ -1,6 +1,6 @@
 ## Grade
 
-<img src="https://cdn.discordapp.com/attachments/714092571655274496/1199403568243945533/Screen_Shot_2024-01-23_at_6.21.08_PM.png?ex=65c26a9e&is=65aff59e&hm=e00824733632bc71225006ad3db9a6b99de8bb0bf3f2be880bd1206fea36f7f8&" width=200px height=175px/>
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1199403568243945533/Screen_Shot_2024-01-23_at_6.21.08_PM.png?ex=65e7549e&is=65d4df9e&hm=e3f43b2dcece5bc015103444d7911940f6504002426564129bd4b99d90d48a7e&" width=200px height=175px/>
 
 ## I - Mandatory Part
 
