@@ -1,5 +1,5 @@
 # Grade
-<img src="https://cdn.discordapp.com/attachments/714092571655274496/1200758638369849414/Screen_Shot_2024-01-27_at_12.05.05_PM.png?ex=65c758a0&is=65b4e3a0&hm=4e34c6e785ceaf7da581cb1f7f13d3a9bb71c25ec78ea9305b07041dc4da7c95&" width=200px height=175px/>
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1200758638369849414/Screen_Shot_2024-01-27_at_12.05.05_PM.png?ex=65ec42a0&is=65d9cda0&hm=7e9421195e2c8e55ee19a291d38e51ce030d22c5155c7c36a0e6838c29a3c203&" width=200px height=175px/>
 
 # Why ft_printf is important?
 **Because ft_putnbr() and ft_putstr() aren’t enough!**
