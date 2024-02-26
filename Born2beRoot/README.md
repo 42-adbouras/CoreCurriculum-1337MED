@@ -7,7 +7,9 @@ We have to create a server respecting the partition scheme defined in the subjec
 Here you can find the topics that we will examine, we are going to tackle the configuration of the server, I will not go through the installation.
 
 # ToC
+
 ### [Mandatory](#mandatory)
+
 - [Virtuallization](#virtuallization)
   * What is a Virtual Machine?
   * Advantages of a Virtual Machine
@@ -30,8 +32,12 @@ Here you can find the topics that we will examine, we are going to tackle the co
 - [SSH](#ssh)
   * What is SSH?
   * How does SSH works?
-### [Bonus](#bonus)  
-# I - Mandatory
+ 
+
+### [Bonus](#ii---bonus)
+
+
+# Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
@@ -162,7 +168,9 @@ In summary, both APT and Aptitude are powerful package management tools in Debia
     The public key is used to encrypt data, while the private key is used to decrypt it. Messages encrypted with the public key can only be decrypted with the corresponding private key, ensuring secure communication without the need to share secret keys.
 <p align="center">
 <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2017/07/asymmetric-encryption.webp" style="width:600px">
-</p>    
+</p>
+
+You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
 
 
 
