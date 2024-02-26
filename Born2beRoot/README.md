@@ -23,8 +23,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Directory Structure
   * What is Mounting?
 - [Packet Management in Debian](#packet-management-in-debian)
-  * APT & Aptitude
-    
+  * APT
+  * Aptitude
+  * The diffrence between APT & Aptitude
+### [Bonus](#bonus)  
 # Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
@@ -125,6 +127,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
 
 ## Packet Management in Debian
    In Linux-based operating systems such as Debian, software installation is achieved through packages. These packages encapsulate all the necessary files required for executing a specific set of commands or functionalities. Thus, it's crucial to understand how to install these packages on our Born2beroot virtual machine.
+   
   * APT:\
     APT (Advanced Package Tool) is a package management command-line tool used by Debian. It simplifies the process of managing software packages on Linux systems. apt provides a high-level command-line interface for the package management system and is designed to handle the installation, upgrade, and removal of software packages, as well as the management of package dependencies.\
     Here are some of the key functionalities provided by apt:\
@@ -134,7 +137,24 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
 `Removing Packages:` If you no longer need a package, you can remove it using the `apt remove` command.\
 `Searching for Packages:` You can search for available packages using the `apt search` command.\
 `Cleaning Up:` apt also allows you to clean up unnecessary packages and dependencies that were installed as dependencies but are no longer needed with the `apt autoremove` command.
+
   * Aptitude:\
     Aptitude also like APT, it's a high-level package management interface for Debian-based systems, it provides a text-based interface similar to a menu-driven package manager, making it more user-friendly for some users who prefer graphical interfaces.
 Aptitude can perform most package management tasks, including installing, removing, and upgrading packages, as well as searching for packages and resolving package dependencies.
-Aptitude also includes features like package filtering, package previewing, and a powerful dependency resolver.  
+Aptitude also includes features like package filtering, package previewing, and a powerful dependency resolver.
+
+  * The diffrence between APT & Aptitude:\
+    `Interface:` APT primarily offers a command-line interface, whereas Aptitude provides a text-based menu-driven interface.\
+`Functionality:` Both tools can perform similar package management tasks, but Aptitude may offer additional features like package filtering and previewing.\
+`User Experience:` Aptitude may be preferred by users who are more comfortable with graphical or menu-driven interfaces, while APT may be preferred by those who prefer command-line interfaces.\
+`Resource Usage:` Aptitude tends to use slightly more system resources compared to APT due to its interactive interface and additional features.\
+In summary, both APT and Aptitude are powerful package management tools in Debian-based Linux distributions, each with its own set of features and interface preferences. Users can choose the tool that best fits their needs and workflow.
+
+
+
+
+# Bonus
+
+
+
+
