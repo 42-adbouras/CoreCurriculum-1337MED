@@ -26,8 +26,11 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * APT
   * Aptitude
   * The diffrence between APT & Aptitude
+ 
+- [SSH](#ssh)
+  * 
 ### [Bonus](#bonus)  
-# Mandatory
+# I - Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
@@ -153,7 +156,9 @@ In summary, both APT and Aptitude are powerful package management tools in Debia
 
 
 
-# Bonus
+
+
+# II - Bonus
 
 
 
