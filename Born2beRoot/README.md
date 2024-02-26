@@ -28,7 +28,8 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * The diffrence between APT & Aptitude
  
 - [SSH](#ssh)
-  * 
+  * What is SSH?
+  * How does SSH works?
 ### [Bonus](#bonus)  
 # I - Mandatory
 ## Virtuallization
@@ -153,7 +154,15 @@ Aptitude also includes features like package filtering, package previewing, and 
 `Resource Usage:` Aptitude tends to use slightly more system resources compared to APT due to its interactive interface and additional features.\
 In summary, both APT and Aptitude are powerful package management tools in Debian-based Linux distributions, each with its own set of features and interface preferences. Users can choose the tool that best fits their needs and workflow.
 
-
+## SSH
+  * What is SSH?\
+    SSH (Secure Shell) is a cryptographic network protocol used for secure communication over an unsecured network. It provides a secure way to access and manage remote systems or devices over a network, such as the internet. SSH is commonly used for tasks like remote command execution, file transfer, and tunneling network connections.
+  * How does SSH works?\
+    SSH commonly uses asymmetric encryption as part of its authentication process. Asymmetric encryption, also known as public-key cryptography, works with a pair of cryptographic keys: a `public key` and a `private key`.\
+    The public key is used to encrypt data, while the private key is used to decrypt it. Messages encrypted with the public key can only be decrypted with the corresponding private key, ensuring secure communication without the need to share secret keys.
+<p align="center">
+<img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2017/07/asymmetric-encryption.webp" style="width:600px">
+</p>    
 
 
 
