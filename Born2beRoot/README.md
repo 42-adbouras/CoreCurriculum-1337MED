@@ -8,7 +8,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
 
 # ToC
 
-### [Mandatory](#mandatory)
+### [Mandatory](#i---mandatory)
 
 - [Virtuallization](#virtuallization)
   * What is a Virtual Machine?
@@ -28,7 +28,10 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * APT
   * Aptitude
   * The diffrence between APT & Aptitude
- 
+
+- [AppArmor](apparmor)
+
+
 - [SSH](#ssh)
   * What is SSH?
   * How does SSH works?
@@ -37,7 +40,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
 ### [Bonus](#ii---bonus)
 
 
-# Mandatory
+# I - Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
@@ -160,6 +163,18 @@ Aptitude also includes features like package filtering, package previewing, and 
 `Resource Usage:` Aptitude tends to use slightly more system resources compared to APT due to its interactive interface and additional features.\
 In summary, both APT and Aptitude are powerful package management tools in Debian-based Linux distributions, each with its own set of features and interface preferences. Users can choose the tool that best fits their needs and workflow.
 
+## AppArmor
+   AppArmor is a Linux security module that restricts the capabilities of individual programs by enforcing security policies, ensuring that programs can only perform actions that are explicitly allowed.\
+   AppArmor uses profiles to define the security policies for each program. A profile is a set of rules that specify what actions a program can perform and on which files or directories. Profiles are stored in the `/etc/apparmor.d/ directory`.\
+   Apparmor has two types of profile modes, `enforced` and `complain`. Profiles in enforcement mode enforce that profile's rules and report violation attempts in `/var/log/syslog`. Profiles in complain mode don't enforce any profile rules, just log violation attempts.
+   The `apparmor-utils` package contains command line tools for configuring Apparmor. Using it you can change Apparmor's execution mode, find the status of a profile create new profiles, etc.
+   
+These are the most common commands:
+   * You can check Apparmor's status with `aa-status`.
+   * To put a profile in `complain` mode you can use `sudo aa-complain /path/to/profile`, `</path/to/profile>` path where the profile directory is located.
+   * To put a profile in `enforced` mode you can use `sudo aa-enforce /path/to/profile`.
+   * You can read more over [here](https://askubuntu.com/questions/236381/what-is-apparmor).
+
 ## SSH
   * What is SSH?\
     SSH (Secure Shell) is a cryptographic network protocol used for secure communication over an unsecured network. It provides a secure way to access and manage remote systems or devices over a network, such as the internet. SSH is commonly used for tasks like remote command execution, file transfer, and tunneling network connections.
@@ -170,7 +185,7 @@ In summary, both APT and Aptitude are powerful package management tools in Debia
 <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2017/07/asymmetric-encryption.webp" style="width:600px">
 </p>
 
-You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
+  * You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
 
 
 
