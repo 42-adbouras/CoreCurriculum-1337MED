@@ -29,8 +29,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Aptitude
   * The diffrence between APT & Aptitude
 
-- [AppArmor](apparmor)
+- [AppArmor](#apparmor)
 
+- [UFW](#ufw)
 
 - [SSH](#ssh)
   * What is SSH?
@@ -164,8 +165,8 @@ Aptitude also includes features like package filtering, package previewing, and 
 In summary, both APT and Aptitude are powerful package management tools in Debian-based Linux distributions, each with its own set of features and interface preferences. Users can choose the tool that best fits their needs and workflow.
 
 ## AppArmor
-   AppArmor is a Linux security module that restricts the capabilities of individual programs by enforcing security policies, ensuring that programs can only perform actions that are explicitly allowed.\
-   AppArmor uses profiles to define the security policies for each program. A profile is a set of rules that specify what actions a program can perform and on which files or directories. Profiles are stored in the `/etc/apparmor.d/ directory`.\
+   AppArmor is a Linux security module that restricts the capabilities of individual programs by enforcing security policies, ensuring that programs can only perform actions that are explicitly allowed. It come preinstalled in Debian.\
+   AppArmor uses profiles to define the security policies for each program. A profile is a set of rules that specify what actions a program can perform and on which files or directories. Profiles are stored in the `/etc/apparmor.d/` directory.\
    Apparmor has two types of profile modes, `enforced` and `complain`. Profiles in enforcement mode enforce that profile's rules and report violation attempts in `/var/log/syslog`. Profiles in complain mode don't enforce any profile rules, just log violation attempts.
    The `apparmor-utils` package contains command line tools for configuring Apparmor. Using it you can change Apparmor's execution mode, find the status of a profile create new profiles, etc.
    
@@ -174,6 +175,9 @@ These are the most common commands:
    * To put a profile in `complain` mode you can use `sudo aa-complain /path/to/profile`, `</path/to/profile>` path where the profile directory is located.
    * To put a profile in `enforced` mode you can use `sudo aa-enforce /path/to/profile`.
    * You can read more over [here](https://askubuntu.com/questions/236381/what-is-apparmor).
+
+## UFW
+   
 
 ## SSH
   * What is SSH?\
