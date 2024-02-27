@@ -24,6 +24,12 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Types of file systems
   * Directory Structure
   * What is Mounting?
+
+- [SUDO](#sudo)
+  * What is sudo?
+  * Installing sudo
+  * Configuring sudo
+    
 - [Packet Management in Debian](#packet-management-in-debian)
   * APT
   * Aptitude
@@ -139,6 +145,59 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
   * What is Mounting:\
       Mounting in Linux is the process of making a file system available for use by attaching it to a specific directory in the existing file system hierarchy. This allows users and applications to access the files and directories on the mounted file system as if they were part of the main file system. The mount command is used to perform this operation, specifying the device and the mount point.
 
+	## SUDO
+
+* What is sudo?\
+	sudo stands for "superuser do" is a command in Linux that allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. The sudo command is used to perform administrative tasks that require elevated privileges, such as installing software, modifying system files, or changing system settings.
+* Instaling sudo:\
+  In order to install sudo, first we need to login as root.
+	```
+ 	# su root
+  	<enter the root password>
+  	# apt update
+  	# apt upgrade
+  	# apt install sudo
+	```
+    Now, we need to give our regular user the ability to use sudo, by adding the user to the sudo group (and checking that it was added successfully).
+    ```
+    # sudo usermod -aG sudo <username>
+    # getent group sudo
+    ```
+    To check if we now have sudo privileges, we can `exit` the root session to go back to our own user, then run the following command:
+    ```
+    # sudo whoami
+    <enter password>
+    root
+    ```
+    Once our password entered, we should get, as an answer, `root`. If that doesn’t work, we might have to logout and log back in for the changes to take effect.\
+    As a very last resort, if the user still has no sudo privileges after logging out and back in again, we will have to modify the `sudoers.tmp` file from the root session 	with the following commands:
+    ```
+    # su
+    # sudo visudo
+    ```
+    And add this line to the file:
+    ```
+    <username>   ALL=(ALL:ALL) ALL
+    ```
+* Configuring sudo:\
+  For security reasons, the Born2beroot subject requires a few more sudo configurations. We must:
+  	* Limit authentication for sudo to 3 tries for a bad password.
+	* Define a custom message in case of a bad password.
+	* Log sudo commands in `/var/log/sudo/`.
+	* And activate TTY to stop malicious software from giving itself root privileges via sudo.
+   
+In order to do this, we need to add the following lines to the `sudoers.tmp` file (as above, we must open it from the `root` session, with the `sudo visudo` command to be able to write changes to it):
+
+	Defaults     passwd_tries=3
+	Defaults     badpass_message="Wrong password. Try again!"
+	Defaults     logfile="/var/log/sudo/sudo.log"
+	Defaults     log_input
+	Defaults     log_output
+	Defaults     requiretty
+ 
+If the `/var/log/sudo` directory doesn’t exist, we might have to `mkdir sudo` in `/var/log/`.\
+Now, we can have root privileges in secure way, without having to log into the root session.
+  
 ## Packet Management in Debian
    In Linux-based operating systems such as Debian, software installation is achieved through packages. These packages encapsulate all the necessary files required for executing a specific set of commands or functionalities. Thus, it's crucial to understand how to install these packages on our Born2beroot virtual machine.
    
