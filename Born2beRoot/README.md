@@ -443,9 +443,23 @@ enforce_for_root
 ```
 And that’s all there is to it!
 
-## User Management
-
-
+## User & Group Management
+* Changing hostname:\
+  We can change the hostname with the following command:
+```
+$ sudo hostnamectl set-hostname <new_hostname>
+```
+We could also change the hostname by editing the files `/etc/hostname` & `/etc/hosts` instead.\
+You need to restart the machime for changes to take effect.
+* User management:\
+  For the evaluation, we must be able to show a list of all users, add or delete user accounts, change their usernames, add or remove them from groups, etc. The following commands are necessary to do all of that:\
+	`useradd` : creates a new user.\
+	`usermod` : changes the user’s parameters: -l for the username, -c for the full name, -g for groups by group ID.\
+	`userdel -r` : deletes a user and all associated files.\
+	`id -u` : displays user ID.\
+	`users` : shows a list of all currently logged in users.\
+	`cat /etc/passwd | cut -d ":" -f 1` : displays a list of all users on the machine.\
+	`cat /etc/passwd | awk -F '{print $1}'` : same as above.
 
 # II - Bonus
 
