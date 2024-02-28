@@ -48,6 +48,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Installing & Configuring SSH
   * Port Forwarding in VirtualBox
  
+- [Password Policy](#password-policy)
+  * 
+ 
 
 ### [Bonus](#ii---bonus)
 
@@ -290,43 +293,49 @@ These are the most common commands:
 * Installing & Configuring SSH:\
     In Born2beroot, we are asked to install this protocol and route it trough the 4242 port. OpenSSH is the most popular and widespread tool, so let’s install that one. Since we want to be able to connect to our Born2beroot machine from another machine, we need the openssh-server packet. In order to connect to another machine from the Born2beroot machine, we would need the openssh-client packet.
   
-	```
-	$ sudo apt update
-	$ sudo apt upgrade
-	$ sudo apt install openssh-server
- 	$ sudo systemctl enable ssh.service
-	```
-  	To check SSH is up and running we can use the command line:
-  	```
-  	$ sudo systemctl status ssh.service
-  	```
-  	We should see “active” in green.\
-  	Now we need to modify the ports that SSH is listening to, that can be done by editing the ssh configuration file:
-  	```
-	$ sudo nano /etc/ssh/sshd_config
-   	``` 
-	The line we are looking for is towards the beginning of the file and reads “#Port 22”. We want to `uncomment` that and change it to “Port 4242”
-	```
- 	...
- 	Include /etc/ssh/sshd_config.d/*.conf
+```
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install openssh-server
+$ sudo systemctl enable ssh.service
+```
+To check SSH is up and running we can use the command line:
+```
+$ sudo systemctl status ssh.service
+```
+We should see “active” in green.\
+Now we need to modify the ports that SSH is listening to, that can be done by editing the ssh configuration file:
 
-	Port 4242
-	#AddressFamily any
- 	...
- 	```
- 	Also the jubject mentioned "For security reasons, it must not be possible to connect using SSH as root.", for that we can `uncomment` the rule `PermitRootLogin` and set it to `no`.
-  	```
-   	# Authentication:
+```
+$ sudo nano /etc/ssh/sshd_config
+```
 
-	#LoginGraceTime 2m
-	PermitRootLogin no
-	#StrictModes yes
-	```
- 	Then, we have to restart the ssh service for the change to take effect.
-  	```
-   	$ sudo systemctl restart ssh
-   	```
-   	Let’s not forget to tell our firewall to authorize the 4242 port connection! We might also have to delete a new rule about Port 22 which was added automatically with OpenSSH’s installation.
+The line we are looking for is towards the beginning of the file and reads “#Port 22”. We want to `uncomment` that and change it to “Port 4242”
+```
+...
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port 4242
+#AddressFamily any
+...
+```
+Also the jubject mentioned "For security reasons, it must not be possible to connect using SSH as root.", for that we can `uncomment` the rule `PermitRootLogin` and set it to `no`.
+  	
+```
+...
+# Authentication:
+
+#LoginGraceTime 2m
+PermitRootLogin no
+#StrictModes yes
+...
+```
+Then, we have to restart the ssh service for the change to take effect.
+```
+$ sudo systemctl restart ssh
+```
+
+Let’s not forget to tell our firewall to authorize the 4242 port connection! We might also have to delete a new rule about Port 22 which was added automatically with OpenSSH’s installation.
 * Port Forwarding in VirtualBox:\
 	Before we can connect to the virtual machine from another computer via SSH, we have to make a little adjustment in VirtualBox. Indeed, the connection will be refused until we forward the host port to the VM port.\
 In VirtualBox, select the Born2beroot machine and go into configuration settings.
@@ -346,24 +355,55 @@ $ sudo systemctl status ssh
 * Logging into the Born2beroot Server via SSH:\
   Now that we have configured everything, we can check the SHH connection by attempting to log into the Born2beroot virtual machine from the host machine terminal. Of course, the virtual machine must be turned on to be able to connect to it.\
 From the host machine’s terminal, we can connect via SSH with this command:
-	```
-	$ ssh <username_server>@<server_IP_address> -p <ssh_port>
-	```
-	The username will of course be that of the virtual machine user and the port will be 4242. But what is the IP address of our Born2beroot server? Since the virtual machine shares the host’s IP address, we can simply use the localhost IP address. Localhost is an internal shortcut that every computer uses to refer to their own IP address. The localhost IP is 127.0.0.1.\
+```
+$ ssh <username_server>@<server_IP_address> -p <ssh_port>
+```
+The username will of course be that of the virtual machine user and the port will be 4242. But what is the IP address of our Born2beroot server? Since the virtual machine shares the host’s IP address, we can simply use the localhost IP address. Localhost is an internal shortcut that every computer uses to refer to their own IP address. The localhost IP is 127.0.0.1.\
 So we can transcribe the previous command in one of the two following ways:
-	```
-	$ ssh mcombeau@localhost -p 4242
- 	or
-	$ ssh mcombeau@127.0.0.1 -p 4242
- 	<enter user passwor>
- 	```
- 	Once we enter the user password, we can control the virtual machine from the outside! Let’s note that the command prompt has changed and now shows the virtual machine’s hostname.\
+```
+$ ssh mcombeau@localhost -p 4242
+or
+$ ssh mcombeau@127.0.0.1 -p 4242
+<enter user passwor>
+```
+Once we enter the user password, we can control the virtual machine from the outside! Let’s note that the command prompt has changed and now shows the virtual machine’s hostname.\
 In order to put an end to the SSH connection, all we need to do is:
-	```
- 	exit
- 	```
+```
+exit
+```
+
+## Password Policy
+* The subject consist of having a strong password policy, we have to implement the following reguirement:
+	* Your password has to expire every 30 days.
+	* The minimum number of days allowed before the modification of a password will
+be set to 2.
+	* The user has to receive a warning message 7 days before their password expires.
+	* Your password must be at least 10 characters long. It must contain an uppercase
+letter, a lowercase letter, and a number. Also, it must not contain more than 3
+consecutive identical characters.
+	* The password must not include the name of the user.
+	* The following rule does not apply to the root password: The password must have
+at least 7 characters that are not part of the former password.
+In order to configure the first 3 rules, we have to edit the `/etc/login.defs` file:
+```
+sudo nano /etc/login.defs
+```
+And find the “Password aging controls” section to change the values such that:
+```
+PASS_MAX_DAYS 30
+PASS_MIN_DAYS 2
+PASS_WARN_AGE 7
+```
+
+
+
+
 
 # II - Bonus
+
+
+
+
 
 
 
