@@ -38,10 +38,14 @@ Here you can find the topics that we will examine, we are going to tackle the co
 - [AppArmor](#apparmor)
 
 - [UFW](#ufw)
+  * What is UFW?
+  * IP Addresses & Ports
+  * Installing & Configuring UFW
 
 - [SSH](#ssh)
   * What is SSH?
   * How does SSH works?
+  * Installing & Configuring SSH
  
 
 ### [Bonus](#ii---bonus)
@@ -236,10 +240,41 @@ These are the most common commands:
    * You can read more over [here](https://askubuntu.com/questions/236381/what-is-apparmor).
 
 ## UFW
-   
+* What is UFW:\
+     UFW, or Uncomplicated Firewall, is a user-friendly front-end for managing iptables firewall rules in Linux. It simplifies the process of configuring a firewall, making it easier for users to set up and manage firewall rules without needing to understand the complexities of iptables directly. UFW is designed to be straightforward and easy to use, making it a popular choice for managing firewall settings on Linux systems.
+* IP Addresses & Ports:\
+	When we talk about traffic and networks, we must understand to things; IP addresses and ports.\
+	An IP address is a unique identifier assigned to each device connected to a network, allowing it to communicate with other devices. It can be either IPv4 (Internet Protocol version 4) or IPv6 (Internet Protocol version 6), with IPv4 being the most commonly used format.\
+	A port is a communication endpoint in a computer's networking stack. It allows a computer to distinguish between different types of traffic and to manage multiple connections to the same IP address. Ports are identified by numbers, with the range from 0 to 65535. Common port numbers include 80 for HTTP traffic, 443 for HTTPS, and 22 for SSH.
+	Together, an IP address and a port number form a socket, which is used to identify a specific process or service on a device. This combination allows multiple services to run on the same device, each accessible via a unique combination of IP address and port number.
+* Installing & Configuring UFW:\
+  As the subject suggests the firewall must be active when you launch your virtual machine.
+  ```
+  $ sudo apt update
+  $ sudo apt upgrade
+  $ sudo apt install ufw
+  $ sudo ufw enable
+  ```
+	If everything goes well, we should get a message stating that the firewall is active and enabled at system startup. At any time, we can check the status of UFW and that of the ports with the following command:
+  ```
+  $ sudo ufw status verbose
+  ```
+	Also we to leave only port 4242 open.
+  ```
+  $ sudo ufw allow 4242
+  ```
+  To delete any uneseserry rules, you can list all available rules with the command:
+  ```
+  $ sudo ufw status numbered
+  ```
+  And then delete them with the `delete` plus the rule's index:
+  ```
+  $ sudo ufw delete 2
+  ```
+     
 
 ## SSH
-  * What is SSH?\
+* What is SSH?\
     SSH (Secure Shell) is a cryptographic network protocol used for secure communication over an unsecured network. It provides a secure way to access and manage remote systems or devices over a network, such as the internet. SSH is commonly used for tasks like remote command execution, file transfer, and tunneling network connections.
   * How does SSH works?\
     SSH commonly uses asymmetric encryption as part of its authentication process. Asymmetric encryption, also known as public-key cryptography, works with a pair of cryptographic keys: a `public key` and a `private key`.\
@@ -250,6 +285,13 @@ These are the most common commands:
 
   * You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
 
+  * Installing & Configuring SSH:
+    In Born2beroot, we are asked to install this protocol and route it trough the 4242 port. OpenSSH is the most popular and widespread tool, so let’s install that one. Since we want to be able to connect to our Born2beroot machine from another machine, we need the openssh-server packet. In order to connect to another machine from the Born2beroot machine, we would need the openssh-client packet.
+    ```
+    $ sudo apt update
+	$ sudo apt upgrade
+	$ sudo apt install openssh-server
+    ```
 
 
 
