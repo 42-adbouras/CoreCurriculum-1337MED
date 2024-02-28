@@ -46,6 +46,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * What is SSH?
   * How does SSH works?
   * Installing & Configuring SSH
+  * Port Forwarding in VirtualBox
  
 
 ### [Bonus](#ii---bonus)
@@ -255,15 +256,16 @@ These are the most common commands:
   $ sudo apt install ufw
   $ sudo ufw enable
   ```
-	If everything goes well, we should get a message stating that the firewall is active and enabled at system startup. At any time, we can check the status of UFW and that of the ports with the following command:
+	To check if UFW up and running we can use the command line:
   ```
-  $ sudo ufw status verbose
+  $ sudo systemctl status ufw
   ```
-	Also we to leave only port 4242 open.
+  	We should see “active” in green.\
+	Also we have to leave only port 4242 open.
   ```
   $ sudo ufw allow 4242
   ```
-  To delete any uneseserry rules, you can list all available rules with the command:
+  To delete any uneseserry rules, you can list all available rules with the command line:
   ```
   $ sudo ufw status numbered
   ```
@@ -276,24 +278,90 @@ These are the most common commands:
 ## SSH
 * What is SSH?\
     SSH (Secure Shell) is a cryptographic network protocol used for secure communication over an unsecured network. It provides a secure way to access and manage remote systems or devices over a network, such as the internet. SSH is commonly used for tasks like remote command execution, file transfer, and tunneling network connections.
-  * How does SSH works?\
+* How does SSH works?\
     SSH commonly uses asymmetric encryption as part of its authentication process. Asymmetric encryption, also known as public-key cryptography, works with a pair of cryptographic keys: a `public key` and a `private key`.\
     The public key is used to encrypt data, while the private key is used to decrypt it. Messages encrypted with the public key can only be decrypted with the corresponding private key, ensuring secure communication without the need to share secret keys.
 <p align="center">
 <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2017/07/asymmetric-encryption.webp" style="width:600px">
 </p>
 
-  * You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
+* You can read more over [here](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
 
-  * Installing & Configuring SSH:
+* Installing & Configuring SSH:\
     In Born2beroot, we are asked to install this protocol and route it trough the 4242 port. OpenSSH is the most popular and widespread tool, so let’s install that one. Since we want to be able to connect to our Born2beroot machine from another machine, we need the openssh-server packet. In order to connect to another machine from the Born2beroot machine, we would need the openssh-client packet.
-    ```
-    $ sudo apt update
+  
+	```
+	$ sudo apt update
 	$ sudo apt upgrade
 	$ sudo apt install openssh-server
-    ```
+ 	$ sudo systemctl enable ssh.service
+	```
+  	To check SSH is up and running we can use the command line:
+  	```
+  	$ sudo systemctl status ssh.service
+  	```
+  	We should see “active” in green.\
+  	Now we need to modify the ports that SSH is listening to, that can be done by editing the ssh configuration file:
+  	```
+	$ sudo nano /etc/ssh/sshd_config
+   	``` 
+	The line we are looking for is towards the beginning of the file and reads “#Port 22”. We want to `uncomment` that and change it to “Port 4242”
+	```
+ 	...
+ 	Include /etc/ssh/sshd_config.d/*.conf
 
+	Port 4242
+	#AddressFamily any
+ 	...
+ 	```
+ 	Also the jubject mentioned "For security reasons, it must not be possible to connect using SSH as root.", for that we can `uncomment` the rule `PermitRootLogin` and set it to `no`.
+  	```
+   	# Authentication:
 
+	#LoginGraceTime 2m
+	PermitRootLogin no
+	#StrictModes yes
+	```
+ 	Then, we have to restart the ssh service for the change to take effect.
+  	```
+   	$ sudo systemctl restart ssh
+   	```
+   	Let’s not forget to tell our firewall to authorize the 4242 port connection! We might also have to delete a new rule about Port 22 which was added automatically with OpenSSH’s installation.
+* Port Forwarding in VirtualBox:\
+	Before we can connect to the virtual machine from another computer via SSH, we have to make a little adjustment in VirtualBox. Indeed, the connection will be refused until we forward the host port to the VM port.\
+In VirtualBox, select the Born2beroot machine and go into configuration settings.
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1212377136321531945/Screen_Shot_2024-02-28_at_1.33.13_PM.png?ex=65f19d32&is=65df2832&hm=8737d65a1f71e8809b597414a0286ce8f0794812892677bc61d0b24fac0b569d&" style="width:600px">
+</p>
+	Then, go to network >> Adapter 1 >> Advanced >> Port Forwarding. Then we will redirect the host port 4242 to the guest port 4242 like this:
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1212378436837048351/Screen_Shot_2024-02-28_at_1.38.50_PM.png?ex=65f19e68&is=65df2968&hm=0995f9b64708c694ca910901a6ce79bcf261e751fb39e3c9c70b79e312bf3a45&" style="width:600px">
+</p>
+	Finally, on your virtual server, we are going to restart the SSH server once again and check its status:
+
+```
+$ sudo systemctl restart ssh
+$ sudo systemctl status ssh	
+```
+* Logging into the Born2beroot Server via SSH:\
+  Now that we have configured everything, we can check the SHH connection by attempting to log into the Born2beroot virtual machine from the host machine terminal. Of course, the virtual machine must be turned on to be able to connect to it.\
+From the host machine’s terminal, we can connect via SSH with this command:
+	```
+	$ ssh <username_server>@<server_IP_address> -p <ssh_port>
+	```
+	The username will of course be that of the virtual machine user and the port will be 4242. But what is the IP address of our Born2beroot server? Since the virtual machine shares the host’s IP address, we can simply use the localhost IP address. Localhost is an internal shortcut that every computer uses to refer to their own IP address. The localhost IP is 127.0.0.1.\
+So we can transcribe the previous command in one of the two following ways:
+	```
+	$ ssh mcombeau@localhost -p 4242
+ 	or
+	$ ssh mcombeau@127.0.0.1 -p 4242
+ 	<enter user passwor>
+ 	```
+ 	Once we enter the user password, we can control the virtual machine from the outside! Let’s note that the command prompt has changed and now shows the virtual machine’s hostname.\
+In order to put an end to the SSH connection, all we need to do is:
+	```
+ 	exit
+ 	```
 
 # II - Bonus
 
