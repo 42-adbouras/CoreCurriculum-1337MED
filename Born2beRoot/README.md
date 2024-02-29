@@ -50,9 +50,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
  
 - [Password Policy](#password-policy)
 
-- [User & Group Management](#user-&-group-management)
+- [User And Group Management](#user-and-group-management)
 
-- [Monitoring.sh](#monitoring.sh)
+- [Monitoring Script](#monitoring-script)
   * The script
   * The Wall Command
   * The Cron Service
@@ -451,7 +451,7 @@ enforce_for_root
 ```
 And that’s all there is to it!
 
-## User & Group Management
+## User And Group Management
 * Changing hostname:\
   We can change the hostname with the following command:
 ```
@@ -479,7 +479,7 @@ You need to restart the machime for changes to take effect.
 `id -g` : shows a user’s main group ID.\
 `getent group` : displays a list of all users in a group.
 
-## Monitoring.sh
+## Monitoring Script
 * The script:\
   The last thing we have to do for mandatory part is a bash script named `monitoring.sh`, it must display the following information every 10 minutes broadcasted on evey terminal connected to our virtual machine:
 	* The architecture of your operating system and its kernel version:
@@ -525,7 +525,6 @@ You need to restart the machime for changes to take effect.
     # echo "IP " && hostname -I && ip link | grep 'link/ether' | awk '{printf "(%s)", $2}'
     ```
     * The number of commands executed with the sudo program.
-  	
   ```
   # grep 'COMMAND' /var/log/sudo/sudo.log | wc -l && echo "cmd"
   ```
@@ -534,7 +533,7 @@ We must also grant the file execution righ:
 ```
 # chmod 755 monitoring.sh
 ```
-The `mpstat` defined on `sysstat` package.
+The command `mpstat` is defined on `sysstat` package.
 ```
 # apt install sysstat
 ```
