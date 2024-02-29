@@ -51,6 +51,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
 - [Password Policy](#password-policy)
 
 - [User And Group Management](#user-and-group-management)
+  * Changing hostname
+  * User Management
+  * Group Management
 
 - [Monitoring Script](#monitoring-script)
   * The script
@@ -202,8 +205,8 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
    
 In order to do this, we need to add the following lines to the `sudoers.tmp` file (as above, we must open it from the `root` session, with the `sudo visudo` command to be able to write changes to it):
 
-	Defaults     passwd_tries=3
-	Defaults     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+	Defaults     passwd_tries=3	// 3 attempts for bad password
+	Defaults     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"	// Paths that can be used by sudo
 	Defaults     badpass_message="Wrong password. Try again!"
 	Defaults     logfile="/var/log/sudo/sudo.log"
 	Defaults     log_input
@@ -537,6 +540,54 @@ The command `mpstat` is defined on `sysstat` package.
 ```
 # apt install sysstat
 ```
+
+* The Wall Command:\
+  The wall command in Linux is used to broadcast a message to all users currently logged into the system. It sends a message to all terminals, including those that are idle or inactive. This can be useful for system administrators to communicate important information or announcements to all users at once.\
+  Example:
+  ```
+  # echo "System will be rebooted in 10 minutes. Please save your work." | wall
+  or
+  # wall "System will be rebooted in 10 minutes. Please save your work."
+  ```
+* The Cron Service:\
+  Cron is a program that enables the execution of scripts or software in an automatic way, at a certain date and time or at a specified interval. It is installed by default in Debian (we can check this with the `apt list cron` command). To be certain it will run at system startup, we should enable it:
+  ```
+  # systemctl enable cron
+  ```
+  Cron uses crontab files to schedule jobs. Each user can have one, or many. As the root user, we will now create one with the following command:
+  ```
+  # crontab -e
+  ```
+  The syntax of a cron file might seem obscure, but it’s not too hard to wrap your head around:
+  ```
+  * * * * * <command to execute>
+  ```
+  here is what each star represents:
+  	```
+  	.------------------------ minutes (0-59)
+	| .-------------------- hours (0-23)
+	| | .---------------- day of the month (1-31)
+	| | | .------------ month of the year (1-12)
+	| | | | .-------- day of the week (0-6, 0 = sunday)
+	| | | | |
+	* * * * * <command to execute>
+  	```
+   By replacing the stars with numerical values, we can define when our command must be executed.\
+So is this the way we should write “every 10 minutes”?
+  	```
+   	10 * * * * bash /root/monitoring.sh
+   	```
+   Almost, but no. This instruction means “execute this at the tenth minute of each hour, every day of every month”. So our monitoring script won’t execute every 10 minutes, but only at midnight 10, 1:10, 2:10, 3:10, 4:10 and so on.\
+  So how are we supposed to say “every 10 minutes”, then? Well, we can simply “divide” the minute star by 10.
+  ```
+  */10 * * * * bash /root/monitoring.sh
+  ```
+  If the wall command wasn’t incorporated directly into the monitoring.sh script, we can pipe it into this cron rule, like so:
+  ```
+  */10 * * * * bash /root/monitoring.sh | wall
+  ```
+  
+
 
 # II - Bonus
 
