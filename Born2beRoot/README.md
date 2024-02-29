@@ -49,7 +49,13 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * Port Forwarding in VirtualBox
  
 - [Password Policy](#password-policy)
+
 - [User & Group Management](#user-&-group-management)
+
+- [Monitoring.sh](#monitoring.sh)
+  * The script
+  * The Wall Command
+  * The Cron Service
  
 
 ### [Bonus](#ii---bonus)
@@ -197,6 +203,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
 In order to do this, we need to add the following lines to the `sudoers.tmp` file (as above, we must open it from the `root` session, with the `sudo visudo` command to be able to write changes to it):
 
 	Defaults     passwd_tries=3
+	Defaults     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 	Defaults     badpass_message="Wrong password. Try again!"
 	Defaults     logfile="/var/log/sudo/sudo.log"
 	Defaults     log_input
@@ -335,6 +342,7 @@ Then, we have to restart the ssh service for the change to take effect.
 $ sudo systemctl restart ssh
 ```
 
+If you want to generaye your public & private keys you can use the command `ssh-keygen`.\
 Let’s not forget to tell our firewall to authorize the 4242 port connection! We might also have to delete a new rule about Port 22 which was added automatically with OpenSSH’s installation.
 * Port Forwarding in VirtualBox:\
 	Before we can connect to the virtual machine from another computer via SSH, we have to make a little adjustment in VirtualBox. Indeed, the connection will be refused until we forward the host port to the VM port.\
@@ -471,10 +479,65 @@ You need to restart the machime for changes to take effect.
 `id -g` : shows a user’s main group ID.\
 `getent group` : displays a list of all users in a group.
 
-
-
-
-
+## Monitoring.sh
+* The script:\
+  The last thing we have to do for mandatory part is a bash script named `monitoring.sh`, it must display the following information every 10 minutes broadcasted on evey terminal connected to our virtual machine:
+	* The architecture of your operating system and its kernel version:
+   	```
+    # uname --all
+    ```
+    * The number of physical processors.
+	```
+ 	# lscpu | grep 'Socket(s)' | awk '{print $2}'
+	```
+	* The number of virtual processors.
+	```
+ 	# lscpu | grep 'Core(s)' | awk '{print $4}'
+	```
+	* The current available RAM on your server and its utilization rate as a percentage.
+	```
+ 	# free --mega | grep 'Mem' | awk '{print $3"/"$2"MB"}'
+ 	# free --mega | grep 'Mem' | awk '{printf "%.2f%%\n", $3 / $2 * 100}'
+	```
+ 	* The current available memory on your server and its utilization rate as a percentage.
+    ```
+    # df -h --total | grep 'total' | awk '{print $3 "/" $2}'
+    # df -h --total | grep 'total' | awk '{printf "%.2f%%\n", $3 / $2 * 100}'
+    ```
+	* The date and time of the last reboot.
+	```
+ 	# who -b | awk '{print $3 " " $4}'
+	```
+	* Whether LVM is active or not.
+   	```
+    # if [ $(lsblk | grep 'lvm' | wc -l) == 0 ]; then echo "No"; else echo "Yes"; fi
+    ```
+	* The number of active connections.
+   	```
+    # ss -s | grep 'TCP:' | awk '{print $4 " ESTABLISHED"}' | tr -d ","
+    ```
+	* The number of users using the server.
+   	```
+    # who | awk '{print $1}' | sort -u | wc -l
+    ```
+	* The IPv4 address of your server and its MAC (Media Access Control) address. • The number of commands executed with the sudo program.
+   	```
+    # echo "IP " && hostname -I && ip link | grep 'link/ether' | awk '{printf "(%s)", $2}'
+    ```
+    * The number of commands executed with the sudo program.
+  	
+  ```
+  # grep 'COMMAND' /var/log/sudo/sudo.log | wc -l && echo "cmd"
+  ```
+NOTE ⚠️ : Some of the above command won't work without root permission, we need to login as root and create the monitoring.sh file on thier session.
+We must also grant the file execution righ:
+```
+# chmod 755 monitoring.sh
+```
+The `mpstat` defined on `sysstat` package.
+```
+# apt install sysstat
+```
 
 # II - Bonus
 
