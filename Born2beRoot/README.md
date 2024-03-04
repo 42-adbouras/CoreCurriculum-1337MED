@@ -590,7 +590,7 @@ So is this the way we should write “every 10 minutes”?
 # II - Bonus
 
 * WordPress setup
-  * What is WordPress:\
+	* What is WordPress:\
     WordPress is a free and open-source content management system (CMS) primarily used for creating websites, blogs, and online stores. It's one of the most popular website-building platforms globally, powering millions of websites on the internet.\
     WordPress provides a user-friendly interface, allowing individuals and businesses to create and manage their websites without needing advanced knowledge in a scripting language. It offers a wide range of themes and plugins, which extend its functionality and customization options.
 
@@ -600,8 +600,8 @@ So is this the way we should write “every 10 minutes”?
     `Lighttpd:` Or Lighty, is an open-source web server software designed for speed, efficiency, and scalability. Its primary job is to serve web content to clients, such as web browsers, efficiently and reliably. It can handle incoming HTTP requests from clients and delivering the appropriate web content in response.\
     `MariaDB:` MariaDB is a popular open-source relational database management system that is widely used for storing and managing data in various applications and websites. Its primary job is to provide a reliable, scalable, and efficient platform for storing, organizing, and retrieving structured data. MariaDB stores data in a structured format within tables, which consist of rows and columns. It supports various data types such as integers, strings, dates, and more.
 
-    * WordPress Installation:
-      To install PHP one packet is not enough
+	* WordPress Installation:\
+      To install PHP one packet is not enough, we need some dependencies, `php-common`, `php-cgi`, `php-cli` and `php-mysql`. However if you want to install latest vervion of PHP you can check [this](https://tecadmin.net/how-to-install-php-on-debian-11/).
 
 
   
