@@ -598,7 +598,10 @@ So is this the way we should write “every 10 minutes”?
 
     `PHP:` Or Hypertext Preprocessor, is a very popular open-source programming language for the creation of dynamic web pages via web server. It is essential for the correct operation of WordPress.\
     `Lighttpd:` Or Lighty, is an open-source web server software designed for speed, efficiency, and scalability. Its primary job is to serve web content to clients, such as web browsers, efficiently and reliably. It can handle incoming HTTP requests from clients and delivering the appropriate web content in response.\
-    `MariaDB:` MariaDB is a popular open-source relational database management system that is widely used for storing and managing data in various applications and websites. Its primary job is to provide a reliable, scalable, and efficient platform for storing, organizing, and retrieving structured data.
+    `MariaDB:` MariaDB is a popular open-source relational database management system that is widely used for storing and managing data in various applications and websites. Its primary job is to provide a reliable, scalable, and efficient platform for storing, organizing, and retrieving structured data. MariaDB stores data in a structured format within tables, which consist of rows and columns. It supports various data types such as integers, strings, dates, and more.
+
+    * WordPress Installation:
+      To install PHP one packet is not enough
 
 
   
