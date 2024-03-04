@@ -602,7 +602,41 @@ So is this the way we should write “every 10 minutes”?
 
 	* WordPress Installation:\
       To install PHP one packet is not enough, we need some dependencies, `php-common`, `php-cgi`, `php-cli` and `php-mysql`. However if you want to install latest vervion of PHP you can check [this](https://tecadmin.net/how-to-install-php-on-debian-11/).
+	```
+ 	$ sudo apt update && sudo apt upgrade
+ 	$ sudo apt install php
+ 	$ sudo apt install php-common php-cgi php-cli php-mysql
+ 	```
+ 	To check PHP’s version on the Born2beroot system, let’s do this command:
+	```
+ 	$ php -v
+	```
+   	The open source web server that we have to choose here is lighttpd (or “lighty“). With a smaller memory footprint than other web servers (like Apache).
+  	However, it is very possible that Apache was installed on our server as a dependency for one of the PHP modules. To avoid conflicts between our web server lighttpd and Apache, the first thing we will do is check if Apache was installed and, if that is the case, uninstall it:
+	```
+ 	$ sudo apt list apache2
+ 	$ sudo apt purge apache2
+ 	$ sudo apt install lighttpd
+ 	$ lighttpd -v
+ 	```
+    Then we will start it, enable it at system startup, and check its version and status with the following commands:
+	```
+	$ sudo systemctl start lighttpd 
+	$ sudo systemctl enable lighttpd 
+	$ sudo systemctl status lighttpd
+	```
+   	Its status should show active. All that is left to do is authorize HTTP traffic in our firewall settings:
+	```
+	$ sudo ufw allow http
+	```
+   	we should see that port 80 is allowed. Port 80 is the default HTTP port. We also need to do some port forwarding in VirtualBox to be able to access to the virtual machine’s port 80 from the outside, like we did before for port 4242:
 
+Settings >> Network >> Adapter 1 >> Advanced >> Port Forwarding
+Add a rule for Host Port: 8080, guest port: 80, as we don’t want host port 80 to be affected.
+
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1214293876232298546/Screen_Shot_2024-03-04_at_8.29.50_PM.png?ex=65f8964c&is=65e6214c&hm=6d12d182e22702410d8e38d9b295b73de14fae1622ced2ab8331c526b9fda02b&" style="width:600px">
+</p>
 
   
 
