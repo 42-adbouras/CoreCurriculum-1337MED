@@ -587,13 +587,21 @@ So is this the way we should write “every 10 minutes”?
   */10 * * * * bash /root/monitoring.sh | wall
   ```
   
-
-
 # II - Bonus
 
+* WordPress setup
+  * What is WordPress:\
+    WordPress is a free and open-source content management system (CMS) primarily used for creating websites, blogs, and online stores. It's one of the most popular website-building platforms globally, powering millions of websites on the internet.\
+    WordPress provides a user-friendly interface, allowing individuals and businesses to create and manage their websites without needing advanced knowledge in a scripting language. It offers a wide range of themes and plugins, which extend its functionality and customization options.
+
+    To setup a WordPress website we need three essential requiSITES, 'see what i did there, nevermind back to the subject!', a scripting language (PHP), a webserver manager (Lighttpd) and a database manager (MariaDB):
+
+    `PHP:` Or Hypertext Preprocessor, is a very popular open-source programming language for the creation of dynamic web pages via web server. It is essential for the correct operation of WordPress.\
+    `Lighttpd:` Or Lighty, is an open-source web server software designed for speed, efficiency, and scalability. Its primary job is to serve web content to clients, such as web browsers, efficiently and reliably. It can handle incoming HTTP requests from clients and delivering the appropriate web content in response.\
+    `MariaDB:` MariaDB is a popular open-source relational database management system that is widely used for storing and managing data in various applications and websites. Its primary job is to provide a reliable, scalable, and efficient platform for storing, organizing, and retrieving structured data.
 
 
-
+  
 
 
 
