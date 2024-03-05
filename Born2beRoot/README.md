@@ -193,6 +193,7 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
     # sudo visudo
     ```
     And add this line to the file:
+  
     ```
     <username>   ALL=(ALL:ALL) ALL
     ```
@@ -205,13 +206,15 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
    
 In order to do this, we need to add the following lines to the `sudoers.tmp` file (as above, we must open it from the `root` session, with the `sudo visudo` command to be able to write changes to it):
 
-	Defaults     passwd_tries=3	// 3 attempts for bad password
-	Defaults     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"	// Paths that can be used by sudo
+```bash
+	Defaults     passwd_tries=3
+	Defaults     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 	Defaults     badpass_message="Wrong password. Try again!"
 	Defaults     logfile="/var/log/sudo/sudo.log"
 	Defaults     log_input
 	Defaults     log_output
 	Defaults     requiretty
+```
  
 If the `/var/log/sudo` directory doesn’t exist, we might have to `mkdir sudo` in `/var/log/`.\
 Now, we can have root privileges in secure way, without having to log into the root session.
@@ -303,7 +306,7 @@ These are the most common commands:
 * Installing & Configuring SSH:\
     In Born2beroot, we are asked to install this protocol and route it trough the 4242 port. OpenSSH is the most popular and widespread tool, so let’s install that one. Since we want to be able to connect to our Born2beroot machine from another machine, we need the openssh-server packet. In order to connect to another machine from the Born2beroot machine, we would need the openssh-client packet.
   
-```
+```bash
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install openssh-server
@@ -321,7 +324,7 @@ $ sudo nano /etc/ssh/sshd_config
 ```
 
 The line we are looking for is towards the beginning of the file and reads “#Port 22”. We want to `uncomment` that and change it to “Port 4242”
-```
+```bash
 ...
 Include /etc/ssh/sshd_config.d/*.conf
 
@@ -331,7 +334,7 @@ Port 4242
 ```
 Also the jubject mentioned "For security reasons, it must not be possible to connect using SSH as root.", for that we can `uncomment` the rule `PermitRootLogin` and set it to `no`.
   	
-```
+```bash
 ...
 # Authentication:
 
@@ -400,7 +403,7 @@ In order to configure the first 3 rules, we have to edit the `/etc/login.defs` f
 sudo nano /etc/login.defs
 ```
 And find the “Password aging controls” section to change the values such that:
-```
+```bash
 PASS_MAX_DAYS 30
 PASS_MIN_DAYS 2
 PASS_WARN_AGE 7
@@ -422,7 +425,7 @@ $ sudo apt install libpam-pwquality
 
 Then, we must edit the `/etc/security/pwquality.conf` configuration file. Here, we will need to remove the comment sign (#) and change the values of the various options. We will end up with something like this:
 
-```
+```bash
 # Number of characters in the new password that must not be present in the 
 # old password.
 difok = 7
@@ -563,6 +566,7 @@ The command `mpstat` is defined on `sysstat` package.
   * * * * * <command to execute>
   ```
   here is what each star represents:
+  
   	```
   	.------------------------ minutes (0-59)
 	| .-------------------- hours (0-23)
@@ -574,15 +578,18 @@ The command `mpstat` is defined on `sysstat` package.
   	```
    By replacing the stars with numerical values, we can define when our command must be executed.\
 So is this the way we should write “every 10 minutes”?
+
   	```
    	10 * * * * bash /root/monitoring.sh
    	```
    Almost, but no. This instruction means “execute this at the tenth minute of each hour, every day of every month”. So our monitoring script won’t execute every 10 minutes, but only at midnight 10, 1:10, 2:10, 3:10, 4:10 and so on.\
   So how are we supposed to say “every 10 minutes”, then? Well, we can simply “divide” the minute star by 10.
+  
   ```
   */10 * * * * bash /root/monitoring.sh
   ```
   If the wall command wasn’t incorporated directly into the monitoring.sh script, we can pipe it into this cron rule, like so:
+  
   ```
   */10 * * * * bash /root/monitoring.sh | wall
   ```
@@ -602,17 +609,20 @@ So is this the way we should write “every 10 minutes”?
 
 	* WordPress Installation:\
       To install PHP one packet is not enough, we need some dependencies, `php-common`, `php-cgi`, `php-cli` and `php-mysql`. However if you want to install latest vervion of PHP you can check [this](https://tecadmin.net/how-to-install-php-on-debian-11/).
+
 	```
  	$ sudo apt update && sudo apt upgrade
  	$ sudo apt install php
  	$ sudo apt install php-common php-cgi php-cli php-mysql
  	```
  	To check PHP’s version on the Born2beroot system, let’s do this command:
+  
 	```
  	$ php -v
 	```
    	The open source web server that we have to choose here is lighttpd (or “lighty“). With a smaller memory footprint than other web servers (like Apache).
   	However, it is very possible that Apache was installed on our server as a dependency for one of the PHP modules. To avoid conflicts between our web server lighttpd and Apache, the first thing we will do is check if Apache was installed and, if that is the case, uninstall it:
+  
 	```
  	$ sudo apt list apache2
  	$ sudo apt purge apache2
@@ -620,6 +630,7 @@ So is this the way we should write “every 10 minutes”?
  	$ lighttpd -v
  	```
     Then we will start it, enable it at system startup, and check its version and status with the following commands:
+  
 	```
 	$ sudo systemctl start lighttpd 
 	$ sudo systemctl enable lighttpd 
@@ -638,7 +649,30 @@ Add a rule for Host Port: 8080, guest port: 80, as we don’t want host port 80 
 <img src="https://cdn.discordapp.com/attachments/714092571655274496/1214293876232298546/Screen_Shot_2024-03-04_at_8.29.50_PM.png?ex=65f8964c&is=65e6214c&hm=6d12d182e22702410d8e38d9b295b73de14fae1622ced2ab8331c526b9fda02b&" style="width:600px">
 </p>
 
-  
+Finally, we can do a little test to check that lighttpd is working properly. In a browser on the host machine, we can connect to the following address and port: `http://127.0.0.1:8080` (or `http://localhost:8080`). We should see the lighttpd placeholder page, like this:
+
+<p align="center">
+<img src="https://dietpi.com/forum/uploads/default/original/2X/2/2c52208b72ca0f9cb14c9798ef4361443109e63f.png" style="width:600px">
+</p>
+	We will replace this page with a WordPress website very soon!
+
+Let’s do another quick test. In the virtual machine, let’s create a file named info.php in the /var/www/html directory like so:
+
+```
+$ sudo nano /var/www/html/info.php
+```
+Here we will write a small script to show information about PHP on this server:
+
+```php
+<?php
+phpinfo();
+?>
+```
+
+
+
+
+
 
 
 
