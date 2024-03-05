@@ -819,11 +819,47 @@ Finally, we can connect to http://127.0.0.1:8080 in our host browser to reach th
 
 There! Once the installation is complete, we can connect and customize our website however we want. Anything is possible!
 
+* Fail2ban Setup:\
+  Fail2ban is a program that analyses server logs to identify and ban suspicious IP addresses. If it finds multiple failed login attempts or automated attacks from an IP address, it can block it with the firewall, either temporarily or permanently.
 
+This is the service we will install for the second Born2beroot bonus. We will then start and enable Fail2ban, as well as check its status.
+  
+```
+$ sudo apt install fail2ban
+$ systemctl start fail2ban
+$ systemctl enable fail2ban
+```
+To configure Fail2ban we need to head to `/etc/fail2ban/` and make a copy of `jail.conf` and `fail2ban.conf` and name the new copies : `jail.local` `fail2ban.local`
 
+```
+$ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+$ sudo cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+$ sudo nano /etc/fail2ban/jail.local
+```
 
+To apply Fail2ban to SSH connections, we have to add a few lines to the file `jail.local` under the “SSH servers” section that starts at line 279:
 
+```bash
+#
+# SSH servers
+#
 
+[sshd]
+
+# To use more aggressive sshd modes set filter parameter "mode" in jail.local:
+# normal (default), ddos, extra or aggressive (combines all).
+# See "tests/files/logs/sshd" or "filter.d/sshd.conf" for usage example and details.
+# mode   = normal
+enabled  = true
+maxretry = 3
+findtime = 10m
+bantime  = 1d
+port     = 4242
+logpath  = %(sshd_log)s
+backend  = %(sshd_backend)s
+```
+
+for `config.local` we have to add the following lines:
 
 
 
