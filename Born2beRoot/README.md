@@ -764,11 +764,60 @@ We should see something like this:
 ```
 Our wordpress_db database is there.
 
+Before we can start installing WordPress on our Born2beroot virtual server, we need the following packets: wget to download from a web server, and tar to decompress a file.
 
+```
+$ sudo apt install wget
+$ sudo apt install tar
+```
+Then, we will download the archive of the latest version of WordPress from the official website, extract it and place its contents in the /var/www/html directory. Then we will clean up the archive and the extraction directory:
 
+```
+$ wget http://wordpress.org/latest.tar.gz
+$ tar -xzvf latest.tar.gz
+$ sudo mv wordpress/* /var/www/html/
+$ rm -rf latest.tar.gz wordpress/
+```
 
+We need a configuration file for WordPress. A sample is included in our files, so let’s rename and edit it:
 
+```
+$ sudo mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+$ sudo nano /var/www/html/wordpress/wp-config.php
+```
 
+Here, we want to modify the database parameters to direct WordPress toward the one we created with MariaDB.
+
+```php
+<?php
+/* ... */
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress_db' );
+
+/** Database username */
+define( 'DB_USER', 'admin' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'WPpassw0rd' );
+
+/** Database host */
+define( 'DB_HOST', 'localhost' );
+```
+Lastly, we need to change the permissions for the WordPress directories for the www-data user (our web server) and restart lighttpd:
+
+```
+$ sudo chown -R www-data:www-data /var/www/html/
+$ sudo chmod -R 755 /var/www/html/
+$ sudo systemctl restart lighttpd
+```
+
+Finally, we can connect to http://127.0.0.1:8080 in our host browser to reach the WordPress installation menu for our new website.
+
+<p align="center">
+<img src="https://i.stack.imgur.com/zxxIj.png" style="width:600px">
+</p>
+
+There! Once the installation is complete, we can connect and customize our website however we want. Anything is possible!
 
 
 
