@@ -669,6 +669,104 @@ phpinfo();
 ?>
 ```
 
+Now in our host browser, let’s go see this file at the following address: http://127.0.0.1/info.php.\
+…And we get a “403 Forbidden” error… What is happening here?
+
+   * Activating FastCGI\
+     FastCGI (Fast Common Gateway Interface) is a protocol used for communication between web servers and dynamic content generation engines like PHP, Python, Ruby, and others. Its primary job is to improve the performance and scalability of web servers by reducing the overhead associated with handling dynamic content.
+
+	 FastCGI allows web servers to delegate the execution of dynamic content generation scripts to external processes called FastCGI applications. These applications can be written in various programming languages and are responsible for generating dynamic content in response to HTTP requests.
+
+	 So let’s activate lighttpd’s FastCGI modules with the following commands:
+
+	 ```
+  	 $ sudo lighty-enable-mod fastcgi
+	 $ sudo lighty-enable-mod fastcgi-php
+	 $ sudo service lighttpd force-reload
+   	 ```
+   Now, we should see a page like this when we go to http://127.0.0.1:8080/info.php:
+
+<p align="center">
+<img src="https://cdn.discordapp.com/attachments/714092571655274496/1214513594863976498/Screen_Shot_2024-03-05_at_11.02.55_AM.png?ex=65f962ed&is=65e6eded&hm=8f0e4900727c3b7c5f572c78db00220f957ecf234efb6dd8df63f4b0724fe5b1&" style="width:600px">
+</p> 
+
+   * Installing MariaDB
+     WordPress stores the contents of a website in a database. MariaDB is a free, open source database manager, based on MySQL. To install it, we only need to do:
+
+```
+$ sudo apt install mariadb-server
+```
+
+Then, we will start, enable and check the status of MariaDB:
+
+```
+$ sudo systemctl start mariadb
+$ sudo systemctl enable mariadb
+$ systemctl status mariadb
+```
+We should see that MariaDB is active. But we still need to secure its installation with the command:
+
+```
+$ sudo mysql_secure_installation
+```
+
+To set up MariaDB’s security parameters, we have to answer several questions (and here, root doesn’t refer to our virtual machine’s root user, it refers to MariaDB’s root user!):
+
+```
+Enter current password for root (enter for none): <Enter>
+Switch to unix_socket authentication [Y/n]: Y
+Set root password? [Y/n]: Y
+New password: 101Asterix!
+Re-enter new password: 101Asterix!
+Remove anonymous users? [Y/n]: Y
+Disallow root login remotely? [Y/n]: Y
+Remove test database and access to it? [Y/n]:  Y
+Reload privilege tables now? [Y/n]:  Y
+```
+
+We must then restart the MariaDB service:
+```
+$ sudo systemctl restart mariadb
+```
+Now that MariaDB is properly installed, we need to set up a new database for our WordPress website.
+```
+$ mysql -u root -p
+```
+
+We will need to supply the root password for MariaDB (not the VM’s root password!). Finally, we can create our WordPress database with the following SQL commands:
+
+```sql
+MariaDB [(none)]> CREATE DATABASE wordpress_db;
+MariaDB [(none)]> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'WPpassw0rd';
+MariaDB [(none)]> GRANT ALL ON wordpress_db.* TO 'admin'@'localhost' IDENTIFIED BY 'WPpassw0rd' WITH GRANT OPTION;
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> EXIT;
+```
+
+Now if we go back to MariaDB with the earlier command mysql -u root -p and we do:
+```sql
+MariaDB [(none)]> show databases;
+```
+We should see something like this:
+
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| wordpress_db       |
++--------------------+
+```
+Our wordpress_db database is there.
+
+
+
+
+
+
+
 
 
 
