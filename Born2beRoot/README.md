@@ -510,6 +510,10 @@ You need to restart the machime for changes to take effect.
     # df -h --total | grep 'total' | awk '{print $3 "/" $2}'
     # df -h --total | grep 'total' | awk '{printf "%.2f%%\n", $3 / $2 * 100}'
     ```
+    * The current utilization rate of your processors as a percentage.
+	```
+	# mpstat | grep 'all' | awk '{print 100 - $13"%"}'
+	```
 	* The date and time of the last reboot.
 	```
  	# who -b | awk '{print $3 " " $4}'
@@ -611,14 +615,14 @@ So is this the way we should write “every 10 minutes”?
       To install PHP one packet is not enough, we need some dependencies, `php-common`, `php-cgi`, `php-cli` and `php-mysql`. However if you want to install latest vervion of PHP you can check [this](https://tecadmin.net/how-to-install-php-on-debian-11/).
 
 	```
- 	$ sudo apt update && sudo apt upgrade
- 	$ sudo apt install php
- 	$ sudo apt install php-common php-cgi php-cli php-mysql
- 	```
+	$ sudo apt update && sudo apt upgrade
+	$ sudo apt install php
+	$ sudo apt install php-common php-cgi php-cli php-mysql
+	```
  	To check PHP’s version on the Born2beroot system, let’s do this command:
   
 	```
- 	$ php -v
+	$ php -v
 	```
    	The open source web server that we have to choose here is lighttpd (or “lighty“). With a smaller memory footprint than other web servers (like Apache).
   	However, it is very possible that Apache was installed on our server as a dependency for one of the PHP modules. To avoid conflicts between our web server lighttpd and Apache, the first thing we will do is check if Apache was installed and, if that is the case, uninstall it:
@@ -679,18 +683,17 @@ Now in our host browser, let’s go see this file at the following address: http
 
 	 So let’s activate lighttpd’s FastCGI modules with the following commands:
 
-	 ```
-  	 $ sudo lighty-enable-mod fastcgi
-	 $ sudo lighty-enable-mod fastcgi-php
-	 $ sudo service lighttpd force-reload
-   	 ```
+	```
+	$ sudo lighty-enable-mod fastcgi
+	$ sudo lighty-enable-mod fastcgi-php
+	$ sudo service lighttpd force-reload
+	```
    Now, we should see a page like this when we go to http://127.0.0.1:8080/info.php:
 
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/714092571655274496/1214513594863976498/Screen_Shot_2024-03-05_at_11.02.55_AM.png?ex=65f962ed&is=65e6eded&hm=8f0e4900727c3b7c5f572c78db00220f957ecf234efb6dd8df63f4b0724fe5b1&" style="width:600px">
 </p> 
-
-   * Installing MariaDB
+* Installing MariaDB\
      WordPress stores the contents of a website in a database. MariaDB is a free, open source database manager, based on MySQL. To install it, we only need to do:
 
 ```
