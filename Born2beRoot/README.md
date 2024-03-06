@@ -524,7 +524,7 @@ You need to restart the machime for changes to take effect.
     ```
 	* The number of active connections.
    	```
-    # ss -s | grep 'TCP:' | awk '{print $4 " ESTABLISHED"}' | tr -d ","
+    # netstat -t | grep 'tcp' | wc -l
     ```
 	* The number of users using the server.
    	```
@@ -837,9 +837,10 @@ $ sudo cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 $ sudo nano /etc/fail2ban/jail.local
 ```
 
-To apply Fail2ban to SSH connections, we have to add a few lines to the file `jail.local` under the “SSH servers” section that starts at line 279:
+To apply Fail2ban to SSH connections, we have to add a few lines to the file `jail.local` under the “SSH servers” section that starts at line [274]:
 
 ```bash
+...
 #
 # SSH servers
 #
@@ -856,10 +857,46 @@ findtime = 10m
 bantime  = 1d
 port     = 4242
 logpath  = %(sshd_log)s
-backend  = %(sshd_backend)s
+backend  = systemd
+...
 ```
 
-for `config.local` we have to add the following lines:
+We can do the same for Lighttpd:
+
+```bash
+...
+[lighttpd-auth]
+# Same as above for Apache's mod_auth
+# It catchis wrong authentifications
+enabled = true
+port    = http, 8080
+maxretry = 5
+findtime = 10m
+bantime = 1d
+logpath = %(lighttpd_error_log)s
+...
+```
+When we're done configuring we should restart Fail2ban service:
+
+```
+$ sudo systemctl restart fail2ban
+```
+
+In order to see the failed connection attempts and banned IP addresses, all we need to do is use the following commands:
+
+```
+$ sudo fail2ban-client status
+$ sudo fail2ban-client status sshd
+$ sudo tail -f /var/log/fail2ban.log
+```
+
+To test that Fail2ban is actually banning IP addresses, we can change the SSH ban time to a lower value, like 30m, in the /etc/fail2ban/jail.local configuration file. Then try connecting multiple times from the host machine via SSH with the wrong password. After a few attempts, it should refuse the connection and the fail2ban-client status sshd command should show the banned IP address.
+
+And that’s it for the Born2beroot bonuses!
+
+
+
+
 
 
 
