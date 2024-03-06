@@ -67,7 +67,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
 - [Fail2ban Setup](#fail2ban-setup)
 
 
-### [Sources and Further Reading](#sources-and-further-reading)
+### [Sources](#sources)
 
 
 # I - Mandatory
@@ -904,7 +904,7 @@ To test that Fail2ban is actually banning IP addresses, we can change the SSH ba
 
 And that’s it for the Born2beroot bonuses!
 
-# Sources and Further Reading
+# Sources
 [Debian Installation & Configuration](https://web.archive.org/web/20220508111947/https://www.codequoi.com/en/born2beroot-03-installing-wordpress-on-a-debian-server/#what_is_wordpress).
 
 [Filesystem](https://www.javatpoint.com/linux-file-system).
