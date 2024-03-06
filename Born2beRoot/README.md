@@ -63,7 +63,7 @@ Here you can find the topics that we will examine, we are going to tackle the co
 
 ### [Bonus](#ii---bonus)
 
-- [WordPress Setup](#wordPress-setup)
+- [WordPress Setup](#wordpress-setup)
 - [Fail2ban Setup](#fail2ban-setup)
 
 
@@ -536,7 +536,7 @@ You need to restart the machime for changes to take effect.
    	```
     # who | awk '{print $1}' | sort -u | wc -l
     ```
-	* The IPv4 address of your server and its MAC (Media Access Control) address. • The number of commands executed with the sudo program.
+	* The IPv4 address of your server and its MAC (Media Access Control) address.
    	```
     # echo "IP " && hostname -I && ip link | grep 'link/ether' | awk '{printf "(%s)", $2}'
     ```
