@@ -64,6 +64,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
 ### [Bonus](#ii---bonus)
 
 
+### [Sources and Further Reading](#sources-and-further-reading)
+
+
 # I - Mandatory
 ## Virtuallization
   * What is a Virtual Machine:\
@@ -881,6 +884,7 @@ When we're done configuring we should restart Fail2ban service:
 ```
 $ sudo systemctl restart fail2ban
 ```
+⚠️ Note: if you have trouble starting up the Fail2ban service check this [post](https://github.com/fail2ban/fail2ban/issues/3292).
 
 In order to see the failed connection attempts and banned IP addresses, all we need to do is use the following commands:
 
@@ -893,6 +897,8 @@ $ sudo tail -f /var/log/fail2ban.log
 To test that Fail2ban is actually banning IP addresses, we can change the SSH ban time to a lower value, like 30m, in the /etc/fail2ban/jail.local configuration file. Then try connecting multiple times from the host machine via SSH with the wrong password. After a few attempts, it should refuse the connection and the fail2ban-client status sshd command should show the banned IP address.
 
 And that’s it for the Born2beroot bonuses!
+
+# Sources and Further Reading
 
 
 
