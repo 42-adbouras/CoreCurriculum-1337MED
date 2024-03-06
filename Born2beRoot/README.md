@@ -63,6 +63,9 @@ Here you can find the topics that we will examine, we are going to tackle the co
 
 ### [Bonus](#ii---bonus)
 
+- [WordPress Setup](#wordPress-setup)
+- [Fail2ban Setup](#fail2ban-setup)
+
 
 ### [Sources and Further Reading](#sources-and-further-reading)
 
@@ -72,26 +75,26 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * What is a Virtual Machine:\
     A virtual machine (VM) is a software emulation of a computer system. It operates based on the architecture and functions of a real or physical computer. VMs run applications and operating systems just like a physical computer. They allow multiple virtual machines to run on a single physical machine, sharing its resources such as CPU, memory, and storage. This enables efficient utilization of hardware and provides flexibility and isolation for running different operating systems and applications.
     
-  * Advantages of a Virtual Machine:\
-    `Resource Efficiency:` VMs allow multiple operating systems to run on a single physical machine, sharing resources efficiently.\
-    `Isolation:` Each VM operates independently, which means that issues in one VM do not affect others.\
-    `Flexibility:` VMs can be easily created, modified, or deleted without impacting the host system or other VMs.\
-    `Testing and Development:` VMs provide a safe environment for testing new software or configurations without risking the host system.\
-    `Disaster Recovery:` VMs can be backed up and restored quickly, which is crucial for business continuity and data recovery.\
-    `Scalability:` VMs can be easily scaled up or down to meet changing demands.\
-    `Cost Savings:` By consolidating multiple servers onto a single physical machine, VMs can reduce hardware costs.\
-    `Portability:` VMs can be moved between different physical machines with minimal disruption.
+* Advantages of a Virtual Machine:\
+		`Resource Efficiency:` VMs allow multiple operating systems to run on a single physical machine, sharing resources efficiently.\
+		`Isolation:` Each VM operates independently, which means that issues in one VM do not affect others.\
+		`Flexibility:` VMs can be easily created, modified, or deleted without impacting the host system or other VMs.\
+		`Testing and Development:` VMs provide a safe environment for testing new software or configurations without risking the host system.\
+		`Disaster Recovery:` VMs can be backed up and restored quickly, which is crucial for business continuity and data recovery.\
+		`Scalability:` VMs can be easily scaled up or down to meet changing demands.\
+		`Cost Savings:` By consolidating multiple servers onto a single physical machine, VMs can reduce hardware costs.\
+		`Portability:` VMs can be moved between different physical machines with minimal disruption.
 
-  * Types of virtuallization:\
+* Types of virtuallization:\
     There are two main types of virtualization:\
       `1. Hardware Virtualization:` Also known as Bare Metal, this involves creating a virtual version of an entire computer system, including the hardware. It allows multiple operating systems to run on a single physical machine, each with its own virtual hardware.\
       `2. Operating System Virtualization:` This involves running multiple isolated instances of an operating system on a single host, sharing the host's kernel but having separate user spaces. Containers are more lightweight than VMs and are often used for deploying applications.
 
-    <p align="center">
-    <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/05/Hypervisors-1024x955.png" style="width:500px">
-    </p>
+	<p align="center">
+  <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/05/Hypervisors-1024x955.png" style="width:500px">
+	</p>
 
-  * System Administration:\
+* System Administration:\
     System administration is the practice of managing and maintaining computer systems, networks, and services. It involves a variety of tasks, including:\
     Installing and configuring hardware and software.\
     Managing user accounts and permissions.\
@@ -603,7 +606,8 @@ So is this the way we should write “every 10 minutes”?
   
 # II - Bonus
 
-* WordPress setup
+* WordPress Setup
+
 	* What is WordPress:\
     WordPress is a free and open-source content management system (CMS) primarily used for creating websites, blogs, and online stores. It's one of the most popular website-building platforms globally, powering millions of websites on the internet.\
     WordPress provides a user-friendly interface, allowing individuals and businesses to create and manage their websites without needing advanced knowledge in a scripting language. It offers a wide range of themes and plugins, which extend its functionality and customization options.
@@ -695,8 +699,9 @@ Now in our host browser, let’s go see this file at the following address: http
 
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/714092571655274496/1214513594863976498/Screen_Shot_2024-03-05_at_11.02.55_AM.png?ex=65f962ed&is=65e6eded&hm=8f0e4900727c3b7c5f572c78db00220f957ecf234efb6dd8df63f4b0724fe5b1&" style="width:600px">
-</p> 
-* Installing MariaDB\
+</p>
+
+   * Installing MariaDB\
      WordPress stores the contents of a website in a database. MariaDB is a free, open source database manager, based on MySQL. To install it, we only need to do:
 
 ```
@@ -822,7 +827,8 @@ Finally, we can connect to http://127.0.0.1:8080 in our host browser to reach th
 
 There! Once the installation is complete, we can connect and customize our website however we want. Anything is possible!
 
-* Fail2ban Setup:\
+* Fail2ban Setup
+
   Fail2ban is a program that analyses server logs to identify and ban suspicious IP addresses. If it finds multiple failed login attempts or automated attacks from an IP address, it can block it with the firewall, either temporarily or permanently.
 
 This is the service we will install for the second Born2beroot bonus. We will then start and enable Fail2ban, as well as check its status.
@@ -899,6 +905,15 @@ To test that Fail2ban is actually banning IP addresses, we can change the SSH ba
 And that’s it for the Born2beroot bonuses!
 
 # Sources and Further Reading
+[Debian Installation & Configuration](https://web.archive.org/web/20220508111947/https://www.codequoi.com/en/born2beroot-03-installing-wordpress-on-a-debian-server/#what_is_wordpress).
+
+[Filesystem](https://www.javatpoint.com/linux-file-system).
+
+[SSH](https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work#How_Does_SSH_Work).
+
+[Fail2ban](https://bornoe.org/blog/2023/09/basic-fail2ban-commands/).
+
+ChatGPT & Phind.
 
 
 
