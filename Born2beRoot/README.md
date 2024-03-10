@@ -549,9 +549,10 @@ We must also grant the file execution righ:
 ```
 # chmod 755 monitoring.sh
 ```
-The command `mpstat` is defined on `sysstat` package.
+The command `mpstat` is defined on `sysstat` package, also as the command `netstat` on `net-tools`.
 ```
 # apt install sysstat
+# apt install net-tools
 ```
 
 * The Wall Command:\
@@ -654,13 +655,13 @@ So is this the way we should write “every 10 minutes”?
    	we should see that port 80 is allowed. Port 80 is the default HTTP port. We also need to do some port forwarding in VirtualBox to be able to access to the virtual machine’s port 80 from the outside, like we did before for port 4242:
 
 Settings >> Network >> Adapter 1 >> Advanced >> Port Forwarding
-Add a rule for Host Port: 8080, guest port: 80, as we don’t want host port 80 to be affected.
+Add a rule for Host Port: 80, Guest port: 80.
 
 <p align="center">
-<img src="https://cdn.discordapp.com/attachments/714092571655274496/1214293876232298546/Screen_Shot_2024-03-04_at_8.29.50_PM.png?ex=65f8964c&is=65e6214c&hm=6d12d182e22702410d8e38d9b295b73de14fae1622ced2ab8331c526b9fda02b&" style="width:600px">
+<img src="https://media.discordapp.net/attachments/714092571655274496/1216454156156403882/Screen_Shot_2024-03-10_at_6.34.09_PM.png?ex=66007237&is=65edfd37&hm=cafb6c8202f960142a61e3963d5c97be454b767ffaab5aaa384b6f7c0a020b81&=&format=webp&quality=lossless&width=2774&height=1736" style="width:600px">
 </p>
 
-Finally, we can do a little test to check that lighttpd is working properly. In a browser on the host machine, we can connect to the following address and port: `http://127.0.0.1:8080` (or `http://localhost:8080`). We should see the lighttpd placeholder page, like this:
+Finally, we can do a little test to check that lighttpd is working properly. In a browser on the host machine, we can connect to the following address and port: `http://127.0.0.1` (or `http://localhost`). We should see the lighttpd placeholder page, like this:
 
 <p align="center">
 <img src="https://dietpi.com/forum/uploads/default/original/2X/2/2c52208b72ca0f9cb14c9798ef4361443109e63f.png" style="width:600px">
