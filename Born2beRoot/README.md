@@ -696,7 +696,7 @@ Now in our host browser, let’s go see this file at the following address: http
 	$ sudo lighty-enable-mod fastcgi-php
 	$ sudo service lighttpd force-reload
 	```
-   Now, we should see a page like this when we go to http://127.0.0.1:8080/info.php:
+   Now, we should see a page like this when we go to http://127.0.0.1/info.php:
 
 <p align="center">
 <img src="https://cdn.discordapp.com/attachments/714092571655274496/1214513594863976498/Screen_Shot_2024-03-05_at_11.02.55_AM.png?ex=65f962ed&is=65e6eded&hm=8f0e4900727c3b7c5f572c78db00220f957ecf234efb6dd8df63f4b0724fe5b1&" style="width:600px">
