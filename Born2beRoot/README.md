@@ -820,7 +820,7 @@ $ sudo chmod -R 755 /var/www/html/
 $ sudo systemctl restart lighttpd
 ```
 
-Finally, we can connect to http://127.0.0.1:8080 in our host browser to reach the WordPress installation menu for our new website.
+Finally, we can connect to http://127.0.0.1 in our host browser to reach the WordPress installation menu for our new website.
 
 <p align="center">
 <img src="https://i.stack.imgur.com/zxxIj.png" style="width:600px">
@@ -879,7 +879,7 @@ We can do the same for Lighttpd:
 # Same as above for Apache's mod_auth
 # It catchis wrong authentifications
 enabled = true
-port    = http, 8080
+port    = http
 maxretry = 5
 findtime = 10m
 bantime = 1d
