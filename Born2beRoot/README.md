@@ -904,7 +904,7 @@ And that’s it for the Born2beroot bonuses!
 
 # III - Sources
 
-[Debian Installation & Configuration](https://web.archive.org/web/20220508111947/https://www.codequoi.com/en/born2beroot-03-installing-wordpress-on-a-debian-server/#what_is_wordpress).
+[Debian Installation & Configuration](https://web.archive.org/web/20220508112123/https://www.codequoi.com/en/born2beroot-01-creating-a-debian-virtual-machine/).
 
 [Filesystem](https://www.javatpoint.com/linux-file-system).
 
