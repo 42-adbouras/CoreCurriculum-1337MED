@@ -6,3 +6,4 @@
 |[Libft](Libft)          | 125% |
 |[ft_printf](ft_printf)  | 100% |
 |[get_next_line](get_next_line)  | 125% |
+|[Born2beRoot](Born2beRoot)  | 125% |
