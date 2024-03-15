@@ -1,5 +1,3 @@
-# ⚠️ The project is still in progress ⚠️
-
 ## Introduction
 
 The aim of Born2beRoot is to learn and explore the fundamentals of `system administration` and `virtualization` by inviting us to install a `virtual machime` using VirtualBox.
@@ -59,15 +57,14 @@ Here you can find the topics that we will examine, we are going to tackle the co
   * The script
   * The Wall Command
   * The Cron Service
- 
 
 ### [Bonus](#ii---bonus)
 
-- [WordPress Setup](#wordpress-setup)
+- [WordPress Setup](#wordPress-setup)
 - [Fail2ban Setup](#fail2ban-setup)
 
 
-### [Sources](#sources)
+### [Sources](#iii---sources)
 
 
 # I - Mandatory
@@ -159,10 +156,8 @@ Ext4 file system is the faster file system among all the Ext file systems. It is
     `/tmp:` A temporary directory used for storing temporary files created by the system and users.\
     `/boot:` Contains files needed to boot the system, including the Linux kernel and initial RAM disk (initrd).\
     `/dev:` Contains device files that represent hardware devices. These files are used by the system to interact with hardware.\
-    `/lib and /lib64:` Contain library files that are needed by the system and applications to run.\
-    `/opt:` Used for optional or add-on software packages.\
     `/proc:` A virtual filesystem that provides information about the system and running processes.\
-    `/sys:` Another virtual filesystem that provides a view into the kernel's view of the system's hardware.\
+    `/srv:` Contains site-specific data served by your system.\
     `/mnt and /media:` Used for mounting external file systems.
 
   * What is Mounting:\
@@ -221,6 +216,8 @@ In order to do this, we need to add the following lines to the `sudoers.tmp` fil
 	Defaults     log_output
 	Defaults     requiretty
 ```
+
+⚠️ Note: I had problems with `Defaults	log_output` not saving the output, how I got around this, by adding the line `Defaults	iolog_dir="/var/log/sudo"`. Now the output of sudo command will be archived at `/var/log/sudo/00/00`, and each command would be indexed with a hexadecimal nunber. You can used the `zcat` command on `ttyout` file to display the output.
  
 If the `/var/log/sudo` directory doesn’t exist, we might have to `mkdir sudo` in `/var/log/`.\
 Now, we can have root privileges in secure way, without having to log into the root session.
@@ -381,9 +378,9 @@ $ ssh <username_server>@<server_IP_address> -p <ssh_port>
 The username will of course be that of the virtual machine user and the port will be 4242. But what is the IP address of our Born2beroot server? Since the virtual machine shares the host’s IP address, we can simply use the localhost IP address. Localhost is an internal shortcut that every computer uses to refer to their own IP address. The localhost IP is 127.0.0.1.\
 So we can transcribe the previous command in one of the two following ways:
 ```
-$ ssh mcombeau@localhost -p 4242
+$ ssh <user>@localhost -p 4242
 or
-$ ssh mcombeau@127.0.0.1 -p 4242
+$ ssh <user>@127.0.0.1 -p 4242
 <enter user passwor>
 ```
 Once we enter the user password, we can control the virtual machine from the outside! Let’s note that the command prompt has changed and now shows the virtual machine’s hostname.\
@@ -779,7 +776,7 @@ Before we can start installing WordPress on our Born2beroot virtual server, we n
 $ sudo apt install wget
 $ sudo apt install tar
 ```
-Then, we will download the archive of the latest version of WordPress from the official website, extract it and place its contents in the /var/www/html directory. Then we will clean up the archive and the extraction directory:
+Then, we will download the archive of the latest version of WordPress from the official website, extract it and place its contents in the /var/www/html directory (if you want to be fancy you can place the files at `/srv`). Then we will clean up the archive and the extraction directory:
 
 ```
 $ wget http://wordpress.org/latest.tar.gz
@@ -905,7 +902,8 @@ To test that Fail2ban is actually banning IP addresses, we can change the SSH ba
 
 And that’s it for the Born2beroot bonuses!
 
-# Sources
+# III - Sources
+
 [Debian Installation & Configuration](https://web.archive.org/web/20220508111947/https://www.codequoi.com/en/born2beroot-03-installing-wordpress-on-a-debian-server/#what_is_wordpress).
 
 [Filesystem](https://www.javatpoint.com/linux-file-system).
