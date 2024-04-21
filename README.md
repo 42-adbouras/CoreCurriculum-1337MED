@@ -5,5 +5,5 @@
 |--|--|
 |[Libft](Libft)          | 125% |
 |[ft_printf](ft_printf)  | 100% |
-|[get_next_line](get_next_line)  | 125% |
+|[get_next_line](https://github.com/42-adbouras/get_next_line-1337MED)  | 125% |
 |[Born2beRoot](Born2beRoot)  | 125% |
