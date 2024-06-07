@@ -8,3 +8,4 @@
 |[get_next_line](https://github.com/42-adbouras/get_next_line-1337MED)  | 125% |
 |[Born2beRoot](https://github.com/42-adbouras/Born2beroot-1337MED)  | 125% |
 |[push_swap](https://github.com/42-adbouras/push_swap-1337MED)  | 125% |
+|[minitalk](https://github.com/42-adbouras/minitalk-1337MED)  | 125% |
