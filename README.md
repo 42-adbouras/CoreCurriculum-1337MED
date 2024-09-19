@@ -11,3 +11,4 @@
 |[so_long](https://github.com/42-adbouras/so_long-1337MED)  | 125% |
 |[minitalk](https://github.com/42-adbouras/minitalk-1337MED)  | 125% |
 |[Philosophers](https://github.com/42-adbouras/Philosophers-1337MED)  | 100% |
+|[Minishell](https://github.com/42-adbouras/Minishell-1337MED)  | 101% |
