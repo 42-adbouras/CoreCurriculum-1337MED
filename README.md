@@ -12,4 +12,4 @@
 |[minitalk](https://github.com/42-adbouras/minitalk-1337MED)  | 125% |
 |[Philosophers](https://github.com/42-adbouras/Philosophers-1337MED)  | 100% |
 |[Minishell](https://github.com/42-adbouras/Minishell-1337MED)  | 101% |
-|[CPP00](https://github.com/42-adbouras/CPP01_1337MED)  | 100% |
+|[CPP00](https://github.com/42-adbouras/CPP00_1337MED)  | 100% |
