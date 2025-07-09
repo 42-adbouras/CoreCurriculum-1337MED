@@ -21,6 +21,6 @@
 |[CPP05](https://github.com/42-adbouras/CPP05-1337MED)  | 100% |
 |[CPP06](https://github.com/42-adbouras/CPP06-1337MED)  | 100% |
 |[CPP07](https://github.com/42-adbouras/CPP07-1337MED)  | 100% |
-|[CPP07](https://github.com/42-adbouras/CPP08-1337MED)  | 100% |
-|[CPP07](https://github.com/42-adbouras/CPP09-1337MED)  | 100% |
+|[CPP08](https://github.com/42-adbouras/CPP08-1337MED)  | 100% |
+|[CPP09](https://github.com/42-adbouras/CPP09-1337MED)  | 100% |
 
