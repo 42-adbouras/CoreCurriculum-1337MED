@@ -17,8 +17,10 @@
 |[CPP02](https://github.com/42-adbouras/CPP02_1337MED)  | 100% |
 |[CPP03](https://github.com/42-adbouras/CPP03_1337MED)  | 100% |
 |[CPP04](https://github.com/42-adbouras/CPP04-1337MED)  | 100% |
-|[cub3D](https://github.com/42-adbouras/cub3D_1337MED)  | 100% |
+|[cub3D](https://github.com/42-adbouras/cub3D_1337MED)  | 125% |
 |[CPP05](https://github.com/42-adbouras/CPP05-1337MED)  | 100% |
 |[CPP06](https://github.com/42-adbouras/CPP06-1337MED)  | 100% |
 |[CPP07](https://github.com/42-adbouras/CPP07-1337MED)  | 100% |
+|[CPP07](https://github.com/42-adbouras/CPP08-1337MED)  | 100% |
+|[CPP07](https://github.com/42-adbouras/CPP09-1337MED)  | 100% |
 
