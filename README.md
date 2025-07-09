@@ -12,15 +12,14 @@
 |[minitalk](https://github.com/42-adbouras/minitalk-1337MED)  | 125% |
 |[Philosophers](https://github.com/42-adbouras/Philosophers-1337MED)  | 100% |
 |[Minishell](https://github.com/42-adbouras/Minishell-1337MED)  | 101% |
+|[cub3D](https://github.com/42-adbouras/cub3D_1337MED)  | 125% |
 |[CPP00](https://github.com/42-adbouras/CPP00_1337MED)  | 100% |
 |[CPP01](https://github.com/42-adbouras/CPP01_1337MED)  | 100% |
 |[CPP02](https://github.com/42-adbouras/CPP02_1337MED)  | 100% |
 |[CPP03](https://github.com/42-adbouras/CPP03_1337MED)  | 100% |
 |[CPP04](https://github.com/42-adbouras/CPP04-1337MED)  | 100% |
-|[cub3D](https://github.com/42-adbouras/cub3D_1337MED)  | 125% |
 |[CPP05](https://github.com/42-adbouras/CPP05-1337MED)  | 100% |
 |[CPP06](https://github.com/42-adbouras/CPP06-1337MED)  | 100% |
 |[CPP07](https://github.com/42-adbouras/CPP07-1337MED)  | 100% |
 |[CPP08](https://github.com/42-adbouras/CPP08-1337MED)  | 100% |
 |[CPP09](https://github.com/42-adbouras/CPP09-1337MED)  | 100% |
-
