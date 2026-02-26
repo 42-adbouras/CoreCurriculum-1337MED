@@ -1,5 +1,6 @@
 # Core-Curriculum-1337MED
 **Here I will shaire with you my current progress of the 42 core curriculum at 1337MED!**
+*⚠️ Some repositries are private due to misuse of 1337 students*
 
 |Project|Grade
 |--|--|
